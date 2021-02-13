@@ -12,7 +12,7 @@ under Creative Commons CC BY 4.0 license and this is the [original
 template](https://es.overleaf.com/latex/templates/cooking-recipe-template/zcmdmwpnbctk).
 
 <p align="center">
-   <a href="https://github.com/">	
+   <a href="https://github.com/rhyloo/LaTeX-Templates/tree/main/recipes">	
   <img width="500"  src="recipes/recipe.jpg">
   </a>
 </p>
