@@ -13,7 +13,7 @@ template](https://es.overleaf.com/latex/templates/cooking-recipe-template/zcmdmw
 
 <p align="center">
    <a href="https://github.com/rhyloo/LaTeX-Templates/tree/main/recipes">	
-  <img width="250" height="500"  src="recipes/recipe.jpg">
+  <img width="250" height="350"  src="recipes/recipe.jpg">
   </a>
 </p>
 
