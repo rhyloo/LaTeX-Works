@@ -11,7 +11,11 @@ languages, font, background and images, the author is Raphkebab, it is
 under Creative Commons CC BY 4.0 license and this is the [original
 template](https://es.overleaf.com/latex/templates/cooking-recipe-template/zcmdmwpnbctk).
 
-![Image of recipe Template](recipe/recipe.jpg)
+<p align="center">
+   <a href="https://github.com/">	
+  <img width="500"  src="recipes/recipe.jpg">
+  </a>
+</p>
 
 #### Comments
 
