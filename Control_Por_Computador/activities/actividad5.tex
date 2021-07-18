@@ -1,0 +1,126 @@
+\subsection{Actividad 5}
+Calcular el error en régimen permanente para el caso de usar
+controlador proporcional con ganancia $k_a$, ante entrada escalón y
+rampa para los casos continuo y discreto con $T=0.05$ tanto del
+sistema servomotor de posición como de velocidad.
+\begin{center}
+  {\Large\textbf{Posición}}\\
+   \textbf{Continuo}
+  \end{center}
+\begin{equation}
+  G(s) = \dfrac{157.41}{s(s+63.55)(s+5.495)} \rightarrow \text{Tipo 1}
+\end{equation}
+\begin{equation}
+    kG(s)H(s) = \dfrac{157.41*kr*k}{s(s+63.55)(s+5.495)} =
+  \dfrac{N(s)}{D(s)} 
+\end{equation}
+Mediante el \textbf{Teorema del valor final} 
+\begin{equation}
+  e(\infty) = \lim_{t\to\infty}e(t)=\lim_{s\to 0}s\cdot E(s)=
+  \lim_{s\to 0}\dfrac{s D(s)}{N(s)+D(s)} \cdot R(s) 
+\end{equation}
+\begin{itemize}
+\item Escalón $R(s) =\dfrac{1}{s}$
+  \begin{equation}
+    \lim_{s\to 0}\dfrac{s D(s)}{N(s)+D(s)} \cdot \dfrac{kr}{s} =
+    \lim_{s\to 0}\dfrac{kr \cdot
+      s(s+63.55)(s+5.495)}{601.2590\cdot k+s(s+63.55)(s+5.495)} =
+    \dfrac{0}{601.2590\cdot k} = 0
+    \end{equation}
+  \item Rampa $R(s) = \dfrac{1}{s^2}$
+    \begin{equation}
+      \small
+    \lim_{s\to 0}\dfrac{s D(s)}{N(s)+D(s)} \cdot \dfrac{kr}{s^2} =
+    \lim_{s\to 0}\dfrac{kr \cdot
+      (s+63.55)(s+5.495)}{601.2590\cdot k+s(s+63.55)(s+5.495)} =
+    \dfrac{63.55\cdot5.495\cdot3.8197}{601.2590\cdot k} = \dfrac{2.2185}{k}
+    \end{equation}
+  \end{itemize}
+
+  \begin{center}
+   \textbf{Discreto}
+  \end{center}
+  Mediante el \textbf{Teorema del valor final}
+  \begin{itemize}
+\item Escalón $(1-z^{-1})$
+
+  \begin{equation}
+    e_{ss}=\lim_{z\to 1} \left[(1-z^{-1})\dfrac{kr}{1+GH(z)}\dfrac{1}{1-z^{-1}}\right]
+  \end{equation}
+    \begin{equation}
+          e_{ss}=\lim_{z\to 1} \left[\dfrac{kr}{1+k_a \dfrac{0.0061465 (z+1.939) (z+0.09724)}{(z-1) (z-0.7598) (z-0.0417)}}\right]
+        \end{equation}
+            \begin{equation}
+          e_{ss}=0
+        \end{equation}
+        
+  \item Rampa $\dfrac{Tz^{-1}}{(1-z^{-1})^2}$
+    \begin{equation}
+    \lim_{z\to 1} \dfrac{1}{\dfrac{k_a}{zT} \left(\dfrac{0.01609(z+1.939)(z+0.0974)}{(z-0.7598)(z-0.0417)}\right)}
+  \end{equation}
+    \begin{equation}
+e(\infty) = \dfrac{1}{k_a(4.6915)}      
+    \end{equation}
+  \end{itemize}
+  
+\begin{center}
+  {\Large\textbf{Velocidad}}\\
+   \textbf{Continuo}
+  \end{center}
+\begin{equation}
+  G(s) = \dfrac{157.41}{(s+63.55)(s+5.495)} \rightarrow \text{Tipo 0}
+\end{equation}
+\begin{equation}
+    kG(s)H(s) = \dfrac{157.41*k}{(s+63.55)(s+5.495)} =
+  \dfrac{N(s)}{D(s)} 
+\end{equation}
+Mediante el \textbf{Teorema del valor final} 
+\begin{equation}
+  e(\infty) = \lim_{t\to\infty}e(t)=\lim_{s\to 0}s\cdot E(s)=
+  \lim_{s\to 0}\dfrac{s D(s)}{N(s)+D(s)} \cdot R(s) 
+\end{equation}
+\begin{itemize}
+\item Escalón $R(s) =\dfrac{1}{s}$
+  \begin{equation}
+    \small
+    \lim_{s\to 0}\dfrac{s D(s)}{N(s)+D(s)} \cdot \dfrac{kr}{s} =
+    \lim_{s\to 0}\dfrac{(s+63.55)(s+5.495)}{157.4 k+(s+63.55)(s+5.495)} =
+    \dfrac{349.2072}{157.4k+349.2072} = \dfrac{0.2218}{k+0.2218}
+    \end{equation}
+  \item Rampa $R(s) = \dfrac{1}{s^2}$
+    \begin{equation}
+      \small
+    \lim_{s\to 0}\dfrac{s D(s)}{N(s)+D(s)} \cdot \dfrac{kr}{s^2} =
+    \lim_{s\to 0}\dfrac{(s+63.55)(s+5.495)}{157.4 k+(s+63.55)(s+5.495)}\cdot\dfrac{1}{s} =
+ \lim_{s\to 0}\dfrac{(s+63.55)(s+5.495)}{157.4 k+(s+63.55)(s+5.495)}\cdot \lim_{s\to 0}\dfrac{1}{s} = \infty
+    \end{equation}
+  \end{itemize}
+
+  \begin{center}
+   \textbf{Discreto}
+  \end{center}
+  Mediante el \textbf{Teorema del valor final}
+  \begin{itemize}
+\item Escalón $(1-z^{-1})$
+  \begin{equation}
+    e_{ss}=\lim_{z\to 1} \left[(1-z^{-1})\dfrac{kr}{1+GH(z)}\dfrac{1}{1-z^{-1}}\right]
+  \end{equation}
+    \begin{equation}
+          e_{ss}=\lim_{z\to 1} \left[\dfrac{kr}{1+k_a \dfrac{0.077655 (z+0.3364)}{(z-0.7598)(z-0.0417)}}\right]
+        \end{equation}
+            \begin{equation}
+          e_{ss}=\dfrac{1}{1+k_a (0.4508)}
+    \end{equation}
+  \item Rampa $\dfrac{Tz^{-1}}{(1-z^{-1})^2}$
+      \begin{equation}
+    e_{ss}=\lim_{z\to 1} \left[(1-z^{-1})\dfrac{kr}{1+GH(z)}\dfrac{Tz^{-1}}{(1-z^{-1})^2}\right]
+  \end{equation}
+    \begin{equation}
+          e_{ss}=\lim_{z\to 1} \left[\dfrac{T\cdot kr}{(1-z^{-1})\cdot
+            kr \cdot \dfrac{0.077655(z+0.336)}{(z-0.7598)(z-0.0417)}}\right]
+        \end{equation}
+            \begin{equation}
+          e_{ss}=\infty
+    \end{equation}
+
+  \end{itemize}

@@ -1,0 +1,235 @@
+\header{chapter2}
+\chapter{}
+\label{chapter2}
+
+\mkexercise{Demostrar que la inversa de la capacidad equivalente de la
+asociación de condensadores en serie es igual a a la suma de las
+capacidades recíprocas.}
+
+\mksolution{
+  Aplicamos la segunda ley de Kirchhoff:
+  \begin{equation}
+    \begin{split}
+      V_{eq}(t)- V_1(t)- V_2(t) - V_3(t) - ... - V_n(t) = 0 \\
+      V_{eq}(t) = V_1(t) + V_2(t) + V_3(t) + ... + V_n(t) \\
+      \end{split}
+    \end{equation}
+    Derivamos la función $V_{eq}(t)$ .
+    \begin{equation}
+        V_{eq}'(t) = V_1'(t) + V_2'(t) + V_3'(t) + ... + V_n'(t) \\
+      \end{equation}
+    Reemplazamos $V_n$ por la ecuación de la caída de tensión en los
+    bornes de un condensador:
+    \begin{equation}
+    \dfrac{I(t)}{C}  =  V'(t)
+    \end{equation}
+
+    \begin{equation}
+      \dfrac{I(t)}{C_{eq}} = \dfrac{I(t)}{C_{1}} + \dfrac{I(t)}{C_{2}} +
+      \dfrac{I(t)}{C_{3}} + ... + \dfrac{I(t)}{C_{n}}
+    \end{equation}
+
+    Como la corriente que pasa por el circuito es igual podemos
+    eliminarla de la ecuación y resulta:
+    \begin{equation}
+      \dfrac{1}{C_{eq}} = \dfrac{1}{C_{1}} + \dfrac{1}{C_{2}} +
+      \dfrac{1}{C_{3}} + ... + \dfrac{1}{C_{n}}
+      \end{equation}
+  }
+
+
+\mkexercise{Calcula el equivalente Thevening entre los puntos A y B
+  del circuito siguiente:}
+
+\mksolution{
+  \begin{enumerate}[1.]
+    \item Eliminar fuentes de corriente y tensión. Las de corriente
+      se transforman en circuitos abiertos y las de tensión en
+      cortocircuitos.
+
+      %% Insertar imagen resultante Esto simplifica mucho el circuito
+      Ya que los cortocircuitos eliminan algunas resistencias, como $R_1$ y
+      $R_2$. \footnotetext[1]{\textbf{ NOTA:} Hay que recordar que la asociación de
+        resistencias no funciona igual porque el puerto A-B está desconectado
+        pero tiene un carga asociada.}
+
+     \begin{equation}
+       \begin{split}
+         R_s &= R_4+R_3+R_5\\
+         R_S &= \nc{3}{3} + \nc{5}{3} + 500\\
+         R_s &=  \nc{8.5}{3} \ \Omega \\
+         R_{TH} &= \dfrac{1}{\dfrac{1}{R_s}+\dfrac{1}{R_6}}\\
+         R_{TH} &= \dfrac{1}{\dfrac{1}{\nc{8.5}{3}}+\dfrac{1}{\nc{0.8}{3}}}\\
+         R_{TH} &= 731.18 \  \Omega
+         \end{split}
+       \end{equation}
+       \item Para calcular la $V_{TH}$ tenemos que resolver
+         el circuito y calcular la diferencia de potencial
+         entre los terminales A y B.
+
+         Planteamos el sistema de ecuaciones:
+         \begin{equation}
+           \begin{split}
+             0 &= V_{fc}-i_{fc}R_1-V_1-i_1R_3-i_{fc}R_2 \\
+             0 &= V_{fc}-i_{fc}R_1-i_2R_4-i_2R_6-V_2-i_2R_5-i_{fc}R_2 \\
+             0 &= i_{fc}-i_2-i_1 \\
+           \end{split}
+         \end{equation}
+       \end{enumerate}
+
+       Las ecuaciones anteriores pueden reescribirse de la forma $Ax=B$.
+
+       \begin{equation}
+         \begin{bmatrix}
+           1 & -5000 & 0 \\
+           1 & 0 & -4300 \\
+           0 & -1 & -1 
+         \end{bmatrix}
+         \begin{bmatrix}
+           V_{fc}\\
+           i_1\\
+           i_2
+         \end{bmatrix}
+         =
+         \begin{bmatrix}
+           12\\
+           15\\
+           -\mili{3}
+         \end{bmatrix}
+       \end{equation}
+
+       Podemos usar cualquier método para resolver el sistema, a
+       efectos prácticos \textsc{MATLAB} es la
+       solución ideal ya que con el comando
+       \textit{mldivide(A,B)} lo hacemos
+       fácilmente.
+
+       Las soluciones para $V_{fc},i_1,i_2$
+       son las siguientes:
+       \begin{equation}
+         \begin{split}
+           V_{fc}&=20.5458 \\
+           i_1&=\mili{1.7}\\
+           i_2&=\mili{1.3}
+           \end{split}
+       \end{equation}
+
+       No debemos olvidar que estas soluciones
+       realmente no nos sirven directamente pero
+       son el camino para calcular $V_{TH}$.
+       Planteamos un último sistema de ecuaciones,
+       que puede solucionarse por sustitución.
+
+       \begin{equation}
+         \begin{split}
+           V_B&=6+V_c\\
+           V_C &= (\mili{1.3})(500)\\
+           V_A &= (\nc{0.8}{3})(\mili{1.3})+6+(\mili{1.3})(500)\\
+           V_A &= 7.69 \ V
+         \end{split}
+       \end{equation}
+
+       %%Necesito insertar imágenes aquí porque
+       %%no se entiende dónde aplico V_B o V_C
+
+       Para terminar de calcular la $V_{TH}$
+       tenemos que calcular la diferencia de
+       potencial entre $V_A$ y $V_C$.
+
+       \begin{equation}
+         \begin{split}
+           V_{TH}&=V_A-V_C\\
+           V_{TH}&=7,69 - 0.65\\
+           V_{TH} &= 7,04 \ V
+           \end{split}
+       \end{equation} 
+
+      \item Hemos obtenido la $V_{TH}$ y la
+        $R_{TH}$.
+
+        \begin{equation}
+          \begin{split}
+            V_{TH} = 7.04 \ V\\
+            R_{TH} = 731.18 \ \Omega\\
+            I_{cc} = \mili{9.63} \ A
+            \end{split}
+          \end{equation}
+}
+
+\mkexercise{Determinar el punto de operación (bias point), del
+siguiente circuito de forma manual y después verificarlo con la ayuda
+del simulador.}
+
+\mksolution{
+  Este circuito se puede resolver mediante la
+  segunda ley de Kirchhoff, las ecuaciones son:
+
+  \begin{equation}
+    \begin{split}
+      0 &= V_1-i_2R_1-V_3-i_2R_6-V_2\\
+      0 &=V_1-i_3(R_3+R_4+R_5)-V_2\\
+      0 &= i_1-i_2-i_3
+      \end{split}
+    \end{equation}
+
+    Como podemos observar en las ecuaciones
+    anteriores son independientes y pueden
+    resolverse sin hacer uso de sistemas, no estoy
+    seguro del motivo pero deduzco que es por la
+    concepción topológica que tiene el circuito ya
+    que simplifcado es un divisor de corriente.
+
+    \begin{equation}
+      \begin{split}
+        i_1 &=i_2+i_3\\
+        i_2 &= \dfrac{V_1-V_2}{R_3+R_4+R_5}\\
+        i_3 &= \dfrac{V_1-V_2-V_3}{R_1+R_6}
+      \end{split}
+    \end{equation}
+
+    Realmente lo anterior no es el bias point del
+    circuito pero calcular las tensiones en cada
+    nudo/nodo es relativamente sencillo con toda
+    la información (corrientes encontradas).
+
+    \begin{equation}
+      \begin{split}
+        i_1 &= 2.833 \ mA \\
+        i_2 &= 5.833 \ mA \\
+        i_3 &= 3.000 \ mA \\
+      \end{split}
+    \end{equation}
+
+}
+
+\mkexercise{Con la ayuda del simulador calcular la curva de
+transferencia:``Tensión de salida en función de la tensión de
+entrada'' para el circuito de la figura considerando que su entrada
+cambia entre 0 y 5 votios. ¿Qué función hace el
+condensador?. ¿Qué tensión hay a la salida en ausencia de tensión
+de entrada?}
+
+%\mksolution{
+%Este ejercicio lo he resuelto con un par de
+%cuentas más, he considerado efectos transitorios.
+
+%Antes de empezar con la parte
+%analítica/simulación, analicemos lo que debería
+%ocurrir.
+
+%Hay un condensador en el circuito eso implica ya
+%sea en DC o AC una carga o descarga, una constante
+%de tiempo y dos tramos de salida, la zona
+%transitoria y la estacionaria.
+%Si $V_{in}$ es cero la única carga que puede tener
+%el condensador es la proporcionada por la pila de
+%5 voltios
+
+%}
+
+
+\mkexercise{Con la ayuda del simulador, estudiar y explicar el
+comportamiento Transitorio del Circuito de la figura durante 40
+milisegundos cuando se excita con un pulso de 5 voltios durante un
+tiempo de 10 milisegundos. ¿Cuál es la carga almacenada en el
+condensador a los 5 milisegundos?. ¿Y a los 30 milisegundos?.}

@@ -1,0 +1,96 @@
+\subsection{\textcolor{blue}{VERSION 0.1 - Funcionamiento básico}}
+\begin{footnotesize}
+\begin{center}
+\begin{tikzpicture}[node distance=5em, auto,every node]
+    \node[left = 2.5em](stage0){<<Reposo>>};\EtapeInit[0,0]{0}
+        \Transition[VX0]{0}
+    \Etape[VT0]{1}
+        \Transition[VX1]{1}
+    \Etape[VT1]{2}
+        \Transition[VX2]{2}
+    \Etape[VT2]{3}
+        \Transition[VX3]{3}
+    \Etape[VT3]{4}
+        \Transition[VX4]{4}
+    \Etape[VT4]{5}
+        \DivOU{X5}{-10/L5a,10/L5b}
+            \SequenceTT[L5a]{5a}{6}
+            \SequenceTT[L5b]{5b}{7}
+    \Etape[VT6]{8}
+        \Transition[VX8]{8}
+    \Etape[VT8]{9}
+        \Transition[VX9]{9}
+    \Etape[VT9]{10}
+        \Transition[VX10]{10}
+    \Etape[VT10]{11}
+        \Transition[VX11]{11}
+ %================================================================================
+    \ActionX{X0}{LM}
+        \ActionCond{X0}{CLK}
+    \Action{X0}{LF}
+        \ActionCond{X0}{CLK}
+    \ActionX{X1}{LM}
+        \ActionCond{X1}{CLK}
+    \Action{X1}{LA}
+        \ActionCond{X1}{CLK}
+    \ActionX{X2}{RUN,REV,R+}
+    \ActionX{X3}{F+}
+    \ActionX{X4}{D+}
+    \ActionX{X5}{E+}
+    \ActionX{X6}{V+,B+}
+    \ActionX{X7}{C+}
+    \ActionX{X8}{A+,V+}
+    \ActionX{X9}{A+,V+,B+}
+    \ActionX{X10}{A-}
+    \ActionX{X11}{R+,RUN}
+%================================================================================
+    \Recept{T0}{$\uparrow$PM}
+    \Recept{T1}{TP/X1}
+    \Recept{T2}{pp $\wedge \ f_0 \wedge \ $ pb }
+    \Recept{T3}{\underline{1}}
+    \Recept{T4}{\underline{1}}
+    \Recepts{5a/$d_0$, 5b/$d_1$}
+    \Recept{T6}{$b_1$}
+    \Recept{T7}{\underline{1}}
+    \Recept{T8}{$a_1$}
+    \Recept{T9}{$b_1 \wedge a_1 $}
+    \Recept{T10}{$a_0$}
+    \Recept{T11}{\underline{1}}
+%================================================================================
+        \node[below of = stage0, node distance=2.5em, right=1.5em](stage1t){(0)};
+    
+    \node[below of = stage0](stage1){<<Preparación>>};
+        \node[below of = stage1, node distance=2.5em, right=1.5em](stage2t){(1)};
+    
+    \node[below of = stage1](stage2){<<Palet>>};
+        \node[below of = stage2, node distance=2.5em, right=1.5em](stage3t){(2)};
+    
+    \node[below of = stage2](stage3){<<Alimentador>>};
+        \node[below of = stage3, node distance=2.5em, right=1.5em](stage4t){(3)};
+    
+    \node[below of = stage3](stage4){<<Verificador>>};
+        \node[below of = stage4, node distance=2.5em, right=1.5em](stage5t){(4)};
+    
+    \node[below of = stage4](stage5){<<Desplazador>>};
+        \node[below of = stage5, left =5.5em, node distance=3.7em](stage7t){(5a)};
+    
+    \node[below of = stage5, left =7.5em, node distance=6.25em ](stage6){<<PP baja>>};
+    \node[below of = stage6, node distance=5.10em ](stage8){<<PP sube>>};
+    \node[below of = stage8](stage9){<<PP adelante>>};
+    \node[below of = stage9](stage10){<<PP suelta>>};
+    \node[below of = stage10](stage11){<<Palet>>};
+    \node[below of = stage5, right =11.6em, node distance=3.7em ](stage5b){(5b)}; 
+        \node[below of = stage5, right =6.5em, node distance=6.5em ](stage7){<<Rechazador>>};
+        \node[below of = stage7, right =2.1em, node distance=2.3em ](stage7b){(7)};
+     
+    \node[below of = stage6, node distance=2.5em, right=1.5em](stage6t){(6)};
+    \node[below of = stage8, node distance=2.5em, right=1.5em](stage8t){(8)};
+    \node[below of = stage9, node distance=2.5em, right=1.5em](stage9t){(9)};
+    \node[below of = stage10, node distance=2.5em, right=1.5em](stage10t){(10)};
+    \node[below of = stage11, node distance=2.5em, right=1.5em](stage11t){(11)};
+%================================================================================
+    \LienRetour[-8]{T7}{X0}
+    \LienRetour[10]{T11}{X0}
+\end{tikzpicture}
+\end{center}
+\end{footnotesize}

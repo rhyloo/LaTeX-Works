@@ -1,0 +1,43 @@
+\definecolor{bluekeywords}{rgb}{0.13,0.13,1}
+\definecolor{greencomments}{rgb}{0,0.5,0}
+\definecolor{turqusnumbers}{rgb}{0.17,0.57,0.69}
+\definecolor{redstrings}{rgb}{0.5,0,0}
+
+\lstdefinelanguage{stext}{
+    classoffset = 1,
+    morekeywords={Q, I, FALSE, TRUE},keywordstyle=\color{magenta},
+    classoffset = 2,
+     morekeywords={PROGRAM, FB_BLOCK, VAR_INPUT, AT, BOOL, END_VAR, VAR, VAR_OUTPUT, REPEAT, UNTIL, END_REPEAT, WHILE, END_WHILE, DO, THEN, IF, ELSE, END_IF},keywordstyle=\color{bluekeywords},
+    classoffset=0,
+    sensitive=true,
+    keywordstyle = {\color{key-color}},
+    keywordstyle = [4]{\color{magenta}},
+    otherkeywords = {;,*:,\%},
+    morekeywords = [4]{;},
+    morekeywords = [4]{*:},
+    morekeywords = [4]{\%},
+    morecomment=[l][\color{greencomments}]{///},
+    morecomment=[l][\color{greencomments}]{//},
+    morecomment=[s][\color{greencomments}]{{(*}{*)}},
+    morestring=[b]",
+    stringstyle=\color{redstrings}
+    }
+
+\lstnewenvironment{stext}
+  {
+    \lstset{
+        language=stext,
+        basicstyle=\ttfamily,
+        breaklines=true,
+        numbers=left,
+        xleftmargin=2em,
+        framexleftmargin=1.5em,
+        stepnumber=1,
+        showstringspaces=false,
+        tabsize=3,
+        breaklines=true,
+        breakatwhitespace=false
+        columns=fullflexible}
+  }
+  {
+  }

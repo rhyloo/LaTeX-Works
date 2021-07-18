@@ -1,0 +1,52 @@
+\newpage
+\section{\textcolor{blue}{Structure text code}}
+\subsection{\textcolor{blue}{VERSION 0.1 - Funcionamiento básico}}
+\begin{small}
+\begin{stext}
+(*-------------------VARIABLES--------------*)
+PROGRAM MAIN
+VAR_INPUT
+    IbuttonEmergency AT %I*: BOOL;
+    IbuttonStart AT %I*: BOOL;
+    IbuttonStop AT %I*: BOOL;
+    IbuttonMan AT %I*: BOOL;
+    IPoc AT %I*: BOOL;
+    IppDownloadBack AT %I*: BOOL;
+    IppDonwloadForward AT %I*: BOOL;
+    IppDownloadUp AT %I*: BOOL;
+    IppDownloadDown AT %I*: BOOL;
+    IppDownloadEmpty AT %I*: BOOL;
+    IbaseUP AT %I*: BOOL;
+    IbaseDown AT %I*: BOOL;
+    IscrollerBack AT %I*: BOOL;
+    IfeederBackward AT %I*: BOOL;
+    IfeederForward AT %I*: BOOL;
+    IexistsABase AT %I*: BOOL;
+    IpaletBit1 AT %I*: BOOL;
+    IpaletBit2 AT %I*: BOOL;
+    IpaletBit3 AT %I*: BOOL;
+END_VAR
+VAR
+    palet_code (*----array paletcode_input-------*);
+END_VAR
+VAR_OUTPUT
+    ODpo  AT %Q*: BOOL;
+    OlampAlarm  AT %Q*: BOOL;
+    OlampStart AT %Q*: BOOL;
+    OlampMaterial AT %Q*: BOOL;
+    OppDownloadForward AT %Q*: BOOL;
+    OppDownloadBack AT %Q*: BOOL;
+    OppDownloadDown AT %Q*: BOOL;
+    OppDOwnloadSuck AT %Q*: BOOL;
+    ObaseRejectForward AT %Q*: BOOL;
+    ObaseVerifyBack AT %Q*: BOOL;
+    OscrollerForward AT %Q*: BOOL;
+    OfeederForward  AT %Q*: BOOL;
+    ObarrierPalet AT %Q*: BOOL;
+    OmotorLeft AT %Q*: BOOL;
+    OmotorRight AT %Q*: BOOL;
+END_VAR
+(*-------------------MAIN--------------*)
+
+\end{stext}
+\end{small}

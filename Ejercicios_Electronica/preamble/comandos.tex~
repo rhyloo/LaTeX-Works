@@ -1,0 +1,128 @@
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%																	  %%
+%%		         	           Comandos      					      %%
+%%																	  %%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%%Para cambiar la fuente a un fragmento del texto. 
+%%usamos \fuente{phv}{loremipsum loremipsum}
+\newcommand{\fuente}[2]{\fontfamily{#1}\selectfont #2}	
+
+%%Para saltar una página.
+\newcommand\blankpage{		
+	\null
+	\thispagestyle{empty}%
+	\addtocounter{page}{-1}%
+	\newpage}
+	
+\newcommand{\toc}{%
+    \tableofcontents
+        \clearpage
+    \begingroup
+        \pagestyle{empty}%
+        \cleardoublepage
+    \endgroup
+%
+}
+
+\newcommand{\header}[1]{
+    \fancyhead[RO]{\footnotesize\nameref{#1}}
+    \fancyhead[LE]{\footnotesize\nameref{#1}}
+}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%																	  %%
+%%		   	TEOREMAS, DEFINICIONES, PROPOSICIONES, ETC.			      %%
+%%																	  %%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%%Nuevo contador {<nombre variable>}{<se reinicia en...>}
+\newcounter{example}[section]
+
+%%Nuevo entorno{<nombre entorno>}[<numero de argumentos>]{<\refstepcounter = en referencia a este contador aumenta uno>}{lo que hará con el texto}
+%%\newenvironment{ENTORNO}[ARGUMENTOS]{ANTES}{DESPUÉS}
+\newenvironment{example}[1]{\refstepcounter{example}%
+    {\large{\noindent\textcolor{NavyBlue}{\textbf{Ejemplo~\thesection.\theexample }}}} \vspace{-1em}\par #1}%
+    {\par}
+
+\newcommand{\mkexample}[1]{%
+ {%
+    \begin{example}%
+        #1%
+     \end{example}%
+ }%
+}
+
+%\newcounter{solution}[chapter]
+
+%%Nuevo entorno{<nombre entorno>}[<numero de argumentos>]{<\refstepcounter = en referencia a este contador aumenta uno>}{lo que hará con el texto}
+%%\newenvironment{ENTORNO}[ARGUMENTOS]{ANTES}{DESPUÉS}
+\newenvironment{solution}[1]{\refstepcounter{solution}%
+    {\large{\noindent\textcolor{violet}{\textbf{Solución}}}} \vspace{-1em}\par #1}%
+    {\par}
+
+\newcommand{\mksolution}[1]{%
+ {%
+    \begin{solution}%
+        #1%
+     \end{solution}%
+ }%
+}
+
+% \newcounter{exercise}[chapter]
+% \newcommand{\mkexercise}[1]{%
+%  {%
+%     \refstepcounter{exercise}
+%     \begin{tcolorbox}[sharp corners, colframe=violet]
+%         #1%
+%     \end{tcolorbox}%
+%     \vspace*{0.5em}
+%  }%
+% }
+
+
+%% Me permite poner en un cuadro teoremas, ejemplos, etc...
+\newcounter{definition}[section]
+\newcommand{\mkdefinition}[2][\textbf{Definición~\thesection.\thedefinition }]{%
+ {%
+    \refstepcounter{definition}
+    \begin{tcolorbox}[sharp corners, colframe=violet,title ={ \large{\noindent\textcolor{white}{#1}}}]
+        #2%
+    \end{tcolorbox}%
+    \vspace*{0.5em}
+ }%
+}
+
+\newcounter{demostration}[section]
+\newcommand{\mkdemostration}[2][\textbf{Demostración~\thesection.\thedemostration }]{%
+ {%
+    \refstepcounter{demostration}
+    \begin{tcolorbox}[sharp corners, colframe=violet,title ={ \large{\noindent\textcolor{white}{#1}}}]
+    \begin{equation*}
+        \begin{split}
+        #2%    
+        \end{split}
+    \end{equation*}
+    \end{tcolorbox}%
+ }%
+}
+
+
+%% Comando que tengo que modificar para diferencialos del resto.
+\newcommand{\definicion}[1]{\noindent\textcolor{NavyBlue}{\textbf{Definición #1 }}}
+\newcommand{\teorema}[1]{\noindent\textcolor{RedOrange}{\textbf{Teorema #1 }}}
+\newcommand{\proposicion}[1]{\noindent\textcolor{PineGreen}{\textbf{Proposición #1 }}}
+\newcommand{\lema}[1]{\noindent\textcolor{Tan}{\textbf{Lema #1 }}}
+\newcommand{\corolario}[1]{\noindent\textcolor{Salmon}{\textbf{Corolario #1 }}}
+\newcommand{\observacion}[1]{\noindent\textcolor{CornflowerBlue}{\textbf{Observación #1 }}}
+\newcommand{\ejemplo}[1]{\noindent\textcolor{Lavender}{\textbf{Ejemplo #1 }}}
+\newcommand{\demostracion}[1]{\noindent\textcolor{Red}{$\blacktriangleright$ \textbf{Demostracion #1 }}}
+%\newcommand{\ejemplo}[1]{\textcolor{RedViolet}{\textbf{Ejemplo #1}}}
+
+%\newcommand{\axioma}[1]{\textcolor{naranja}{\textbf{Axioma #1}}}
+%\newcommand{\ejercicio}[1]{\textcolor{amarillo}{\textbf{Ejercicio #1}}}
+
+
+
+
+

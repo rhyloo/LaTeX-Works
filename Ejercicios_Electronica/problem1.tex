@@ -1,0 +1,208 @@
+\chapter{chapter1}
+
+\begin{enumerate}[I)]
+\item Determinar analíticamente las corrientes y las caídas de
+  potencial en el nodo central y en la fuente de corriente del
+  circuito de la figura, siendo el valor de la resistencia $R_4$ el
+  indicado en ohmios por las tres cifras menos significativas del
+  documento nacional de identidad o documento identificativo equivalente.
+
+    \item Verificar los resultados analíticos con el simulador mediante un análisis ``bias point''.
+    \item Realizar un informe explicativo con los apartados a) y b) y subirlos al campus a la tarea destinada para tal fin.
+\end{enumerate}
+
+\begin{figure}[H]
+    \centering
+\tikzset{poles/.style={
+circuitikz/voltage/american plus=\textcolor{red}{$+$},
+circuitikz/voltage/american minus=\textcolor{red}{$-$},
+}}
+
+\begin{circuitikz}[american]
+\draw (0,0) -- (0,8) (0,8) -- (8,8) (8,8)--(8,0) (8,0)--(0,0);
+\draw (4,8) to[isource, l=$10mA$, a_=$I_0$] (4,6) to[R, l2^=$R_1$ and \SI{270}{\ohm}] (4,4) to[R, l2_=$R_4$ and \SI{948}{\ohm}] (6,4);
+\draw (8,4) to[battery,v_=$12V$] (6,4);
+\draw (0,4) to[battery,v=$3V$] (2,4) to[R, n=res, l_=$R_2$] (4,4);
+\draw (4,4) to[R, l2_=$R_3$ and \SI{330}{\ohm}] (4,0);
+\draw (4,0) node[ground](GND){};
+\draw (res.n) node[above]{150$\Omega$};
+\end{circuitikz}
+\caption{Circuito objetivo}
+\label{circuito_problema}
+\end{figure}
+
+Como podemos observar en la figura \ref{circuito_problema} tenemos 4 \textbf{nodos}, 4 \textbf{ramas} y $n$ \textbf{mallas}, es decir que tenemos que generar cuatro ecuaciones\footnote{Para determinar las corrientes y caídas de potencial.} según la ecuación $R-(n-1)$ y seleccionar 3 de esas $n$ mallas porque la tercera ecuación la obtenemos del primer lema de Kirchhoff. 
+
+En la figura \ref{circuito_solucion1} y \ref{circuito_solucion2} podemos observar los nodos, las polaridades\footnote{Recordemos que es una polaridad establecida para el análisis.} de los dispositivos,la dirección de las corrientes elegidas y las mallas seleccionadas.
+\begin{figure}[H]
+    \centering
+\tikzset{poles/.style={
+circuitikz/voltage/american plus=\textcolor{red}{$+$},
+circuitikz/voltage/american minus=\textcolor{red}{$-$},
+}}
+
+\begin{circuitikz}[american, /tikz/circuitikz/bipoles/length=1cm]
+\draw (0,0) -- (0,8) (0,8) -- (8,8) (8,8)--(8,0) (8,0)--(0,0);
+\draw (4,8) to[isource,i^>=$i$,v_=$V_3$,*-,poles] (4,6) to[R,v_=$V_{R_1}$, -*,poles] (4,4) to[R,v^>=$V_{R_4}$,i_<=$i_1$,poles] (6,4);
+\draw (8,4) to[battery, v^=$V_1$,*-, poles] (6,4);
+\ctikzset{bipoles/generic/voltage/distance from node=0.8}
+\draw (0,4) to[battery, v_=$V_2$,*-,poles] (2,4);
+\draw (2,4) to[R,v_=$V_{R_2}$,i>^=$i_2$,poles] (4,4);
+\ctikzset {voltage/distance from node=0.8}
+\draw (4,4) to[R,i_>=$i_3$,v^=$V_{R_3}$, -*,poles] (4,0);
+\draw (4,4) node[below right] {$A$};
+\draw (0,4) node[left] {$B$};
+\draw (4,0) node[above right] {$B$};
+\draw (4,8) node[below right] {$B$};
+\draw (8,4) node[right] {$B$};
+\end{circuitikz}
+\caption{Nodos y ``polaridad''}
+\label{circuito_solucion1}
+\end{figure}
+
+\begin{figure}[H]
+    \centering
+\begin{circuitikz}[american]
+\draw (0,0) -- (0,8) (0,8) -- (8,8) (8,8)--(8,0) (8,0)--(0,0);
+\draw[blue,dashed,line width=2.5pt] (0,0) -- (0,8) -- (4,8) -- (4,0) -- (0,0);
+\draw[red,line width=1.5pt] (0,4) -- (0,8) -- (4,8) -- (4,4) -- (0,4);
+\draw[green,line width=1.5pt] (4,4) -- (4,8) -- (8,8) -- (8,4) -- (4,4);
+\draw (4,8) -- (4,6) -- (4,4) -- (6,4);
+\draw (8,4) -- (6,4);
+\draw (4,4) -- (4,0);
+\draw[->,shift={(6,6)},green] (120:.7cm) arc (120:-90:.7cm) node at(0,0){$M_2$};
+\draw[->,shift={(2,2)},blue] (120:.7cm) arc (120:-90:.7cm) node at(0,0){$M_3$};
+\draw[->,shift={(2,6)},red] (120:.7cm) arc (120:-90:.7cm) node at(0,0){$M_1$};
+\end{circuitikz}
+\caption{Mallas seleccionadas}
+\label{circuito_solucion2}
+\end{figure}
+
+Las ecuaciones generadas son las siguientes\footnote{Para el segundo lema de Kirchhoff se considera $-+$ positivo y $+-$ negativo}:
+
+\begin{minipage}[c]{10em}{
+\begin{enumerate}[]
+    \item $i=10 mA$
+    \item $R_1=270 \Omega$
+    \item $R_2=150 \Omega$
+    \item $R_3=330 \Omega$
+    \item $R_4=948 \Omega$
+    \item $V_1=12 V$
+    \item $V_2=3 V$
+\end{enumerate}}
+\end{minipage}
+\hspace{5em}
+\begin{minipage}[c]{20em}
+\begin{equation}
+i_3=i+i_2+i_1
+\end{equation}
+\begin{equation}
+V_3-R_{1}(i)+R_{2}(i_{2})-V_2 = 0
+\end{equation}
+\begin{equation}
+V_3-R_{1}(i)+R_{4}(i_{1})-V_1 = 0
+\end{equation}
+\begin{equation}
+V_3-R_{1}(i)-R_{3}(i_{3}) = 0
+\end{equation}
+\end{minipage}
+
+Reemplazamos en las ecuaciones los valores conocidos y obtenemos:
+\begin{equation}
+i_1+i_2-i_3=-\mili{10}
+\end{equation}
+\begin{equation}
+V_3-2.7+(150)(i_{2})-3= 0
+\end{equation}
+\begin{equation}
+V_3-2.7+(948)(i_{1})-12 = 0
+\end{equation}
+\begin{equation}
+V_3-2.7-(330)(i_{3}) = 0
+\end{equation}
+Generamos un sistema de ecuaciones de la forma $Ax=B$.
+\begin{equation}
+\begin{bmatrix}
+0 & 1 & 1 & -1\\
+1 & 0 & 150 & 0\\
+1 & 948 & 0 & 0\\
+1 & 0 & 0 & -330
+\end{bmatrix}
+\begin{bmatrix}
+V_3\\
+i_1\\
+i_2\\
+i_3\\
+\end{bmatrix}
+=
+\begin{bmatrix}
+-\mili{10}\\
+5.7\\
+14.7\\
+2.7\\
+\end{bmatrix}
+\end{equation}
+Usamos el \textbf{método de Cramer} para resolver el sistema.
+\begin{equation}
+    \det(A) = 504540
+\end{equation}
+\begin{equation}
+\left| \begin{bmatrix}
+-\mili{10} & 1 & 1 & -1\\
+5.7 & 0 & 150 & 0\\
+14.7 & 948 & 0 & 0\\
+2.7 & 0 & 0 & -330
+\end{bmatrix}\right|=\det(A_{V_3}) = \nc{3.364}{6}
+\end{equation}
+\begin{equation}
+\left| \begin{bmatrix}
+0 & -\mili{10} & 1 & -1\\
+1 & 5.7 & 150 & 0\\
+1 & 14.7 & 0 & 0\\
+1 & 2.7 & 0 & -330
+\end{bmatrix}\right|=\det(A_{i_1}) = 4275
+\end{equation}
+\begin{equation}
+\left| \begin{bmatrix}
+0 & 1 & -\mili{10} & -1\\
+1 & 0 & 5.7 & 0\\
+1 & 948 & 14.7 & 0\\
+1 & 0 & 2.7 & -330
+\end{bmatrix}\right|=\det(A_{i_2}) = \nc{-3.25}{3}
+\end{equation}
+\begin{equation}
+\left| \begin{bmatrix}
+0 & 1 & 1 & -\mili{10}\\
+1 & 0 & 150 & 5.7\\
+1 & 948 & 0 & 14.7\\
+1 & 0 & 0 & 2.7
+\end{bmatrix}\right|=\det(A_{i_3}) = 6066
+\end{equation}
+\begin{equation}
+    V_3 = \dfrac{\det(A_{V_3})}{\det(A)} = 6.667 \ V
+\end{equation}
+\begin{equation}
+    i_1 = \dfrac{\det(A_{i_1})}{\det(A)} = 8.47 \ mA
+\end{equation}
+\begin{equation}
+    i_2 = \dfrac{\det(A_{i_2})}{\det(A)} = -6.44 \ mA
+\end{equation}
+\begin{equation}
+    i_3 = \dfrac{\det(A_{i_3})}{\det(A)} = 12 \ mA
+\end{equation}
+Hemos determinado el estado de todas las corrientes y tensiones. Solo he cometido un fallo en el supuesto de la corriente $i_2$ que va en dirección contraria.
+
+Ahora podemos calcular la tensión del nodo central.
+\begin{equation}
+    V_{A} = (i_3)(R_3) = 3.9666 \ V
+\end{equation}
+Realizamos la simulación del circuito.
+\vspace{-1em}
+\begin{figure}[H]
+\centering
+%\includegraphics[clip, trim=3cm 4cm 10.5cm 13cm, scale=1,angle=270]{chapters/chapter_problemas/images/Problema puntuable 1.pdf}
+\end{figure}
+Como podemos observar en la figura los resultados son casi idénticos, las variaciones son apreciables en las milésimas.
+
+
+

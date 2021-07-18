@@ -1,0 +1,161 @@
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%																	  %%
+%%		         	           PAQUETES       					      %%
+%%																	  %%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%%Para las tildes.
+\usepackage[utf8]{inputenc}		
+\DeclareUnicodeCharacter{2212}{-}
+
+\usepackage{lipsum}
+%%Para la codificación de las fuentes de salida, T1 para comillas y acentos.
+\usepackage[T1]{fontenc}		
+
+%%Evita la fuente pixelada tras la carga de fontenc.
+\usepackage{lmodern}		    
+
+%%Para la correcta división silábica en español.
+\usepackage[spanish]{babel}		
+
+%%Para mejoras varias y tener el comando \text{},
+%%para tener comandos como \Cap, \Cup, \leadsto Y para tener \mathbb, \mathfrak
+\usepackage{amsmath,amssymb,amsfonts}		
+\usepackage{txfonts}
+
+%%Para poder hacer \mathscr{F}
+\usepackage{mathrsfs}		
+
+%%Para poder usar el comando afterpage.
+%\usepackage{afterpage}		
+
+%%Para dividir el documento en 2 columnas.
+%\usepackage{multicol}		
+\usepackage[siunitx, RPvoltages]{circuitikz}
+\usepackage{catchfilebetweentags} 
+%%Mejores tablas.
+%\usepackage{tabu}		
+\usepackage{enumerate}
+%%Para modificar opciones de las listas.
+% \usepackage{enumitem}		
+% 	\setlist[enumerate]{labelindent=!, leftmargin=*, label=(\roman*),widest=VIII, align=left}
+	
+%%Para tener un índice dinámico y bonito.
+\usepackage[hidelinks]{hyperref}		
+\hypersetup{
+    colorlinks = true,
+    linkcolor = blue,
+    urlcolor= orange
+}
+%%Para evitar un error con las opciones de xcolor.
+    \PassOptionsToPackage{usenames,dvipsnames}{xcolor}		
+
+
+%% Permite usar directrices como [H]
+\usepackage{float}
+
+\usepackage{esvect}
+%%Para usar colores. Usamos \textcolor{Turquoise}{#1} para colorear #1.
+\usepackage{xcolor}		
+
+%%Para cargar imágenes 
+    %Usaremos \includegraphics[scale=•]{•}.
+\usepackage{graphicx}		
+
+%%Coloured boxes, for LaTeX examples and theorems, etc
+\usepackage{tcolorbox}
+
+%%Para realizar gráficas y dibujos
+\usepackage{tikz}		
+%%Para poder usar flechas y 3D sin problema.    
+    \usetikzlibrary{babel,3d,arrows.meta, arrows}
+
+%%Para la realización de gráficas dentro de Tikz.
+\usepackage{pgfplots}		
+    %%Ancho(predet.) de las gráficas de pgfplots.
+% 	\pgfplotsset{width=10cm,compat=1.9}
+
+\usepackage{pgf}
+ \pgfplotsset{compat=1.15}
+
+%%Para modificar los márgenes por defecto del documento.
+\usepackage[a4paper]{geometry}		
+    %%Para especificar dichos márgenes.
+	\geometry{hmargin={2.3cm,2.3cm},height=24.5cm}		
+	
+%%Para personalizar encabezados y pies de página
+%%se distingue entre Article y Book, cuidado con los comandos.
+\usepackage{fancyhdr}		
+    \pagestyle{fancy}
+
+%%Paquete útil para generar un texto y hacer modificaciones
+\usepackage{lipsum}
+
+%%Paquete de asymptote
+\usepackage[inline]{asymptote}
+
+%%Paquuete espacio entre líneas
+\usepackage{setspace}
+    \setlength{\parskip}{1.5em}              %% Espaciado entre párrafos
+    \setlength{\parindent}{0em}             %% Sangría
+    \renewcommand{\baselinestretch}{1.2}    %% Interlineado						
+
+%%No sé qué hace (aún)
+\usepackage{titlesec}
+\titlespacing*{\section}{0em}{0em}{0em}
+
+%% Soluciona la justificación de la letra monoespacida.
+\usepackage{everysel}
+    \renewcommand*\familydefault{\ttdefault}
+    \EverySelectfont{%
+    \fontdimen2\font=0.4em  % interword space
+    \fontdimen3\font=0.2em  % interword stretch
+    \fontdimen4\font=0.1em  % interword shrink
+    \fontdimen7\font=0.1em  % extra space
+    \hyphenchar\font=`\-    % to allow hyphenation
+}
+%%Imágenes en svg
+\usepackage{svg}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%																	  %%
+%%		         	      Configuraciones      					      %%
+%%																	  %%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\widowpenalty=10000		%Para evitar líneas viudas.
+\clubpenalty=10000		%Para evitar líneas huérfanas.
+
+\makeatletter
+    \@beginparpenalty=10000
+\makeatother
+
+
+%%Grosor de la línea del header (encabezado).
+\renewcommand{\headrulewidth}{2pt}	
+\usepackage{pdfpages}
+\usepackage{pdflscape}
+%%Alto del encabezado
+% \setlength{\headheight}{15pt}
+%     \fancyhead[LO]{\href{https://t.me/Rhyloo}{\footnotesize Rhyloo}}
+%  	\fancyfoot[RO]{\thepage}
+%     \fancyhead[RE]{\href{https://t.me/Rhyloo}{\footnotesize Rhyloo}}
+%     \fancyfoot[C]{}
+%     \fancyfoot[LE]{\thepage}
+\setlength{\headheight}{15pt}
+\rhead{}
+\cfoot{}
+\rfoot{\thepage}
+    % \fancyhead[LO]{}
+    %     \fancyfoot[RO]{\thepage}
+    % \fancyhead[RE]{}
+    % \fancyfoot[C]{}
+    %     \fancyfoot[LE]{\thepage}
+
+%%Permite cambiar la palabra Capítulo por Tema, Clase Magistral, etc...
+    % Estructura
+        %\addto\captions<language>{\renewcommand{\chaptername}{<new name>}}
+    % Ejemplo
+        \addto\captionsspanish{\renewcommand{\chaptername}{Tema}}
+
+\raggedbottom

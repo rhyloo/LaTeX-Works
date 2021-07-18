@@ -1,0 +1,50 @@
+\newpage
+\subsection{Actividad 14}
+Diseñar un controlador analógico tipo PID (PD, PI, PID) para el
+sistema servomotor de velocidad por el \textsc{método de Ziegler-Nichols} en
+abierto y cerrado (si son posibles) y realizar su discretizacion con
+$T=0.05$ aplicando el método trapezoidal y graficar la respuesta escalon
+de posición unitario del sistema de control en bucle cerrado del
+servomotor de velocidad a través de la herramienta \textsc{rltool}.
+
+Para implementar el método Ziegler-Nichols en bucle abierto,
+necesitamos que la respuesta ante entrada escalón sea la respuesta
+aproximada de un sistema de primer orden con retardo y que cumpla
+$0.15<d/tau<0.6$. Tras calcular los parámetros de nuestro sistema
+obtenemos $d/tau = 3 > 0.6$ por lo que no es válido aplicar este
+método. En caso de implementar el método de Ziegler-Nichols en bucle
+cerrado, no se puede implementar debido a que nuestra planta es
+estable independientemente del valor de la ganancia, imposibilitando
+el calculo de los parámetros en el límite de la estabilidad, ya que
+nunca se alcanza.
+
+\begin{tcolorbox}[sharp corners, colframe=bluebox, title= Método de Ziegler-Nichols,breakable=unlimited]
+$>>>$ [Kc,Pm,Wcg] = margin(Gvelocidad)\\
+$>>>$ velocidadz = c2d(Gvelocidad,0.05,'zoh')\\
+$>>>$ step(Gvelocidadz)\\
+$>>>$ T1 = 0.2;\\
+$>>>$ T2 = 0.1;\\
+$>>>$ d = (3*(T1-T2))/2;\\
+$>>>$ tau = T1-d;\\
+$>>>$ d/tau\\
+
+  \begin{tcolorbox}[sharp corners, colback = white]
+    \color{gray}
+\begin{verbatim}
+Kc =
+   Inf
+
+Pm =
+   Inf
+
+Wcg =
+   Inf
+
+ans =
+3.0000
+\end{verbatim}
+  \end{tcolorbox}%
+
+ \end{tcolorbox}%
+
+

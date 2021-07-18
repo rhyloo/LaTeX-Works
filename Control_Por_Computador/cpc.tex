@@ -1,0 +1,78 @@
+\section{Objetivo general}
+El objetivo general del trabajo de la asignatura es el de fomentar la
+comprensión de los conceptos que se abordan a lo largo del curso, en
+particular los relativos a la obtención de modelo lineal de una
+planta, discretización y efecto del muestreo, análisis de la respuesta
+transitoria y permanente continua y discreta, lugar de las raíces en
+el plano s y z, efecto del retardo y diseño de controlador analógico y
+digital PID en sus diferentes métodos, así como el control en espacio
+de estado.
+
+Para ello se parte de un sistema univariable definido por un diagrama
+de bloques que representan su dinámica temporal, y se tratará de
+obtener su comportamiento dinámico y de diseñar un controlador PID o
+en espacio de estado que cumpla unas especificaciones de
+funcionamiento.
+
+El trabajo se realizará en formato colaborativo y en grupo de 2 o 3
+alumnos bajo un soporte fichero tipo Word, donde se irán detallando
+las diferentes tareas secuenciales de las que consta el trabajo
+conforme se vayan realizando. Al final se subirá el trabajo en formato
+.pdf al Campus Virtual y se realizará una exposición oral del trabajo
+por parte del grupo completo al profesor y se evaluará junto con el
+contenido del trabajo como calificación de asignatura.
+
+\section{Planteamiento del problema de control}
+El objetivo del trabajo es controlar la posición de una carga mecánica
+de acuerdo con una posición de consigna, utilizando para ello un
+esquema tipo servomecanismo.
+
+El sistema inicialmente está controlado proporcionalmente en base a
+una ganancia variable $k_a$ sobre un amplificador electrónico que actúa
+en base a la diferencia de posición entre el ángulo de consigna
+$\theta r(t)$ y el ángulo de la carga mecánica $\theta L(t)$.
+
+El sistema objeto del control es un motor de CC con tren de engranajes
+reductor que tiene acoplado una carga mecánica, cuya función de
+transferencia viene indicada en el diagrama de bloques adjunto
+
+con señal de entrada $E_a(s)$ y señal de salida $\theta L(s)$ con
+parámetros físicos determinados.
+
+El sistema de control de posición será controlado a través de un
+controlador PID analógico que reemplazará al controlador proporcional
+con ganancia $k_a$, disponiéndose para ello de un sensor de posición
+(potenciómetro) de ganancia $k_R$.
+
+El esquema de control propuesto también permite alternativamente
+controlar la velocidad del servomotor, sustituyendo el sensor de
+posición por un sensor de velocidad (tacómetro) de ganancia $k_w$.
+
+Por otra parte, se tratará de realizar un control digital PID sobre el
+sistema servomotor ya sea en posición o en velocidad, para lo cual se
+sustituirá el amplificador por un computador añadiendo los
+dispositivos de muestreo y reconstrucción pertinentes.
+
+Finalmente se tratará también la representación en espacio de estado y
+el diseño del sistema de control por realimentación del vector de
+estado.
+
+\section{Actividades}
+\input{./activities/actividad1}
+\input{./activities/actividad2}
+\input{./activities/actividad3}
+\input{./activities/actividad4}
+\input{./activities/actividad5}
+\input{./activities/actividad6}
+\input{./activities/actividad7}
+\input{./activities/actividad8}
+\input{./activities/actividad9}
+\input{./activities/actividad10}
+\input{./activities/actividad11}
+\input{./activities/actividad12}
+\input{./activities/actividad13}
+\input{./activities/actividad14}
+\input{./activities/actividad15}
+\input{./activities/actividad16}
+\input{./activities/actividad17}
+\input{./activities/codigo}

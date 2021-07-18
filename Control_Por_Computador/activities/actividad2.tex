@@ -1,0 +1,20 @@
+\subsection{Actividad 2}
+Obtener la ecuación diferencial del servomotor de posición (en bucle
+abierto) a partir de la función de transferencia en $s$.\textbf{Con condiciones iniciales nulas.}
+  \vspace{-0.05in}
+  \begin{equation}
+    \begin{split}
+      \dfrac{\theta_L(s)}{E_a(s)} &= \dfrac{nk_i}{s((L_as+R_a)(J_{eq}s+b_{eq})+nk_ik_b)}\\
+      nk_iE_a(s) & = \left[s((L_as+R_a)(J_{eq}s+b_{eq})+nk_ik_b)\right]\theta_L(s)\\
+      nk_iE_a(s) & = \left[(L_as^2+R_as)(J_{eq}s+b_{eq})+nk_ik_bs\right]\theta_L(s)\\
+      nk_iE_a(s) & = \left[J_{eq}L_as^3+b_{eq}L_as^2+R_aJ_{eq}s^2+R_ab_{eq}s+nk_ik_bs\right]\theta_L(s)\\
+      nk_iE_a(s) & = s^3\theta_L(s)J_{eq}L_a+s^2\theta_L(s)\left(b_{eq}L_a+(s)R_aJ_{eq}\right)+s\theta_L(s)\left(R_ab_{eq}+nk_ik_b\right)\\
+      \mathcal{L}^{-1}\left[ nk_iE_a(s)\right] & = \mathcal{L}^{-1}\left[s^3\theta_L(s)J_{eq}L_a+s^2\theta_L(s)\left(b_{eq}L_a+R_aJ_{eq}\right)+s\theta_L(s)\left(R_ab_{eq}+nk_ik_b\right)\right]\\
+       nk_iE_a(t) & = \theta_L'''(t)J_{eq}L_a+\theta_L''(t)\left(b_{eq}L_a+R_aJ_{eq}\right)+\theta_L'(t)\left(R_ab_{eq}+nk_ik_b\right)\\
+0 & =
+\theta_L'''(t)J_{eq}L_a+\theta_L''(t)\left(b_{eq}L_a+R_aJ_{eq}\right)+\theta_L'(t)\left(R_ab_{eq}+nk_ik_b\right)-nk_iE_a(t)\\
+% 0 & = \theta_L'''(t)(0.0064)(0.0054)+\theta_L''(t)\left((0.0344)(0.0054)+(0.0054)(0.0064)\right)+\theta_L'(t)\left((0.3438)(0.0344)+(0.1)(0.0544)(0.0444)\right)-(0.1)(0.0544)E_a(t)\\
+0 & = \micro{34.56}\theta_L'''(t)+\micro{220.32}\theta_L''(t)+\mili{12.068}\theta_L'(t)-\mili{5.44}E_a(t)\\
+\end{split}
+\end{equation}
+

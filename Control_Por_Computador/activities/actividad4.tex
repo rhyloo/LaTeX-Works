@@ -1,0 +1,59 @@
+\newpage
+\subsection{Actividad 4}
+Obtener la descripción en espacio de estado $A$, $B$, $C$ y $D$
+del sistema servomotor de velocidad y calcular las matrices $G$, $H$,
+$C$ y $D$ del sistema por discretización.
+
+\begin{tcolorbox}[sharp corners, colframe=bluebox, title= Espacio de
+  estados continuo.]
+$>>>$ [A,B,C,D] = ssdata(ss(Gt))
+  \vspace*{0.5em}
+  \begin{tcolorbox}[sharp corners, colback = white]
+    \color{gray}
+\begin{verbatim}
+A =
+  -69.0417  -21.8248       0
+   16.0000         0         0
+         0    0.1250         0
+B =
+     8
+     0
+     0
+C =
+         0         0    9.8380
+D =
+     0
+\end{verbatim}
+  \end{tcolorbox}%
+  \vspace*{0.5em}
+\end{tcolorbox}%
+
+
+
+\begin{tcolorbox}[sharp corners, colframe=bluebox, title= Espacio de
+  estados discretos.]
+$>>>$ [G,H,Cz,Dz,T]=ssdata(ss(Gtz))
+  \vspace*{0.5em}
+  \begin{tcolorbox}[sharp corners, colback = white]
+    \color{gray}
+\begin{verbatim}
+G =
+    1.8015   -0.8331    0.1267
+    1.0000         0         0
+         0    0.2500         0
+H =
+    0.0625
+         0
+         0
+Cz =
+    0.0257    0.0524    0.0194
+
+Dz =
+     0
+T =
+    0.0500
+\end{verbatim}
+  \end{tcolorbox}%
+  \vspace*{0.5em}
+\end{tcolorbox}%
+

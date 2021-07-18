@@ -1,0 +1,58 @@
+\section{{\textcolor{blue}{Introducción}}}
+
+La \textbf{FMS-201} realiza el proceso de alimentación de la base que sirve como soporte al producto ensamblado (mecanismo de giro), y su desplazamiento hasta el palet situado en el sistema de transferencia.
+\section{\textcolor{blue}{Elementos Constituyentes}}
+\subsection{\textcolor{blue}{Elementos principales}}
+
+\textbf{Alimentador (F+):} Es el elemento que se encarga de suministrar las piezas a la máquina, consta de dos sensores llamados \textbf{$f_0$} y \textbf{$f_1$}, el primero indicaría que el alimentador esta hacia detrás y el segundo nos diría que el alimentador esta hacia delante o activado.\\
+
+\textbf{Verificador (D+):} Es el elemento que se encarga de comprobar que el radio de la circunferencia del centro, de las piezas que les ha pasado el alimentador sea el adecuado tiene dos sensores \textbf{$d_0$} y \textbf{$d_1$} que al igual que en el alimentador, indican \textbf{$d_0$} que el verificador esta hacia arriba y el \textbf{$d_1$} está hacia abajo o verificando la pieza.\\
+
+\textbf{Desplazador (E+):} Es el elemento que se encargado de suministrar las piezas al \textbf{pick and place}, tiene una función similar a la del alimentador, esta consta únicamente de un sensor \textbf{$e_0$} que nos indica que el desplazador esta hacia detrás, es decir, inactivo.\\
+
+\textbf{Rechazador (C+): }Es el elemento encargado de descartar las piezas que estén defectuosas. No consta de ningún sensor.\\
+
+\textbf{Pick and Place (A+,A-,B+,V+):} Este es el elemento más complejo del \textbf{FMS-201}, ya que tenemos 6 sensores para la misma y es la que se encarga de coger las piezas y ponerlas en la plataforma (palet) para mandarlas a la siguiente máquina, tendremos que tener en cuatro posibles estados: \textbf{Pick and Place hacia adelante (A+)}, tiene dos sensores \textbf{$a_0$} y \textbf{$a_1$} que nos indican si está atrás o delante, estos sensores también nos sirven para \textbf{Pick and Place atrás (A-)}, \textbf{Pick and Place baja (B+)} hace que el pick and place baje para coger la pieza, consta de dos sensores \textbf{$b_0$} y \textbf{$b_1$} que nos indican si el elemento está arriba o abajo, por último \textbf{Pick and Place succiona (V+)} que se encarga de succionar la pieza para poder llevarla a la plataforma (palet), consta de un sensor que indica si está vacío o si hay una pieza.\\
+
+\textbf{Cinta de carrera (RUN, REV, R+):} Movimiento del motor.
+\subsection{\textcolor{blue}{Elementos secundarios}}
+
+\textbf{Sensores ($a_0,\ a_1,\ b_0,\ b_1,\ v_1,\ d_0,\ d_1,\ e_0,\ f_0,\ f_1,\ pb,\ pp$):} Los sensores permiten conocer la situación actual del proceso, cada etiqueta está asociada con un actuador, los actuadores están representados con mayúsculas y los sensores con minúsculas.\\
+
+\textbf{Pulsadores y selectores (E$\_$STOP, PM, PP, MAN):} Estos elementos permiten la interacción directa del operario con la máquina.\\
+
+\textbf{Lámparas (LA, LM, FM):} Emiten señales visuales para notificar al operario de acciones que realiza la máquina, como lo es la puesta en marcha o parada, además de posibles incidencias (como la falta de material o atascos). 
+\section{\textcolor{blue}{Descripción del proceso}}
+\subsection{\textcolor{blue}{Funcionamiento básico}}
+
+Análisis de todo el proceso que realiza la \textbf{FMS-201} en un ciclo, tomaremos como un ciclo al proceso que realiza desde que mueve la primera pieza el primer actuador (alimentador) hasta que se activa el motor de la cinta para mover la pieza a la siguiente máquina, además se supone que la máquina cumple las condiciones iniciales (el palet está en el inicio de la carrera, el alimentador tiene bases para distribuir, etc.)\\
+
+El primer paso que realiza la máquina es activar el motor de la cinta para mover el palet, desde la posición inicial hasta el final de carrera donde se colocará la base próximamente, para ello comprobaremos uno de los sensores que se encuentran al final de la cinta, una vez comprobado el sensor que indica que la plataforma está en su sitio.\\
+
+Se activará el alimentador dando lugar a la salida de la primera pieza, la cual pasará al verificador que comprobara el diámetro en la pieza, mediante un temporizador se activará y se desactivará, se le dará unos segundos para activarse mientras llega la pieza y otros segundos para desactivarse que le dé tiempo al mecanismo a comprobar el diámetro, una vez se compruebe que se ha desactiva el verificador.\\
+
+Se pondrá en marcha el segundo alimentador (desplazador) que moverá la pieza al pick and place, el último mecanismo por el que pasara la pieza, se comprobará el sensor que indica si la pieza está en su sitio o no y se procederá a mover el pick and place hacia abajo para que succione la pieza, después que suba la pieza  activaremos el pick and place hacia delante y que el pick and place baje, posteriormente desactivamos la succión para dejar la pieza en la plataforma, por último pondremos la cinta en marcha y bajaríamos el retenedor de palet, para llevar la pieza a la \textbf{FMS-202}.
+\section{\textcolor{blue}{Tabla de entradas y salidas}}
+
+\newpage
+    \paperwidth=\pdfpageheight
+    \paperheight=\pdfpagewidth
+    \pdfpageheight=\paperheight
+    \pdfpagewidth=\paperwidth
+    \headwidth=\textheight
+    \begingroup 
+        \vsize=\textwidth
+        \hsize=\textheight
+            \input{body/notext/table/table1}
+    \endgroup
+\newpage
+\paperwidth=\pdfpageheight
+    \paperheight=\pdfpagewidth
+    \pdfpageheight=\paperheight
+    \pdfpagewidth=\paperwidth
+    \headwidth=\textwidth
+\section{\textcolor{blue}{GRAFCET}} 
+
+
+    
+   

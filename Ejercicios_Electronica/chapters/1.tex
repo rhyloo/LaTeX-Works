@@ -1,0 +1,125 @@
+\header{chapter1}
+\chapter{}
+\label{chapter1}
+\mkexercise{La densidad del cobre es $d = 8.96 \ [gr/cm^3]$ y su
+peso atómico es de $p_a = 63.546 \ [gr/mol]$. Calcular la densidad
+electrónica del cobre o el número de electrones móviles por centímetro
+cúbico.}
+
+\mksolution{
+  \begin{equation*}
+    \begin{split} \dfrac{\#e}{cm^3} &= \dfrac{d \cdot
+        N_a}{p_a} = \dfrac{8.96 \ [gr/cm^3] \cdot 6.022\cdot10^{22} \
+        [\#e/mol]}{63.54 \ [gr/mol]} \\ \dfrac{\#e}{cm^3} &= 8.49 \cdot
+      10^{22} [\#e/cm^3]
+    \end{split}
+  \end{equation*}}
+
+\mkexercise{Una corriente de
+  electrones con una intensidad $I = 500 \ [mA]$ circula por un hilo de
+  cobre cilíndrico largo de $2 \ [mm]$ de diámetro. Calcular la
+  velocidad de deriva o de grupo $\vv{V_m}$ con la que viajan los
+electrones. La carga del electrón es $q_e = 1.6 \cdot 10^{-19} \
+[C]$.}
+
+\mksolution{
+  \begin{equation*}
+    \begin{split} j &= \dfrac{I}{A}\\ j &= qNV_m\\ V_m &=
+      \dfrac{I}{qNA}\\ V_m &= \dfrac{500 \cdot 10^-3}{(1,6 \cdot
+        10^{-19})(8.49 \cdot 10^{22})(\pi(0.1)^2)}\\ V_m &= 0.001 \ [cm/s]
+    \end{split}
+  \end{equation*}}
+
+En este ejercicio hay que hacer un pequeño cambio de unidades en el
+área dado que la concentración de portadores
+lo tenemos en $cm^3$.
+
+\mkexercise{La conductividad eléctrica del cobre a temperatura ambiente es $\sigma = 5.96 \cdot 10^7 \
+  [\Omega^{-1}m^{-1}]$. Calcular la movilidad del electrón en el cobre.}
+
+\mksolution{
+  \begin{equation*}
+    \begin{split} \sigma &= qN\mu \\ \mu &= \dfrac{\sigma}{qN}
+      \\ \mu &= \dfrac{5.96 \cdot 10^7 \ [\Omega^{-1} m^{-1}]}{(1,6 \cdot
+        10^{-19}\ [A \cdot seg/e]))(8.49 \cdot 10^{28} \ [e/m^3])} \\ \mu &=
+      0.0043 \ [m^2/Volt \cdot seg]
+    \end{split}
+  \end{equation*}}
+\mkexercise{Un condensador formado por dos
+  láminas metálicas paralelas de cobre con un dieléctrico de poliéster
+  posee una capacidad de $1 \ [\mu F]$, y está conectado a una
+  diferencia de potencial constante de $5 \ [V]$.
+  \begin{itemize}
+  \item Calcular el número de electrones por exceso (carga
+    negativa) y por defecto (carga positiva) que se encuentran en la
+    superficie de cada una de las láminas.
+  \item Calcular la energía alamacenada en [Watios $\cdot$
+    hora].
+  \end{itemize}}
+
+\mksolution{
+  \begin{equation*}
+    \begin{split} Q &= C (\Delta V)\\ Q &= (1 \ [\mu F]) (5 \
+      [V])\\ Q &= 5 \cdot 10^{-6} \ [C]\\ Q &= 5 \cdot 10^{-6} \ [C]\\ e &=
+      \dfrac{Q}{q_e}\\ e &= \dfrac{5 \cdot 10^{-6} \ [C]}{1.6 \cdot 10^{-19}
+        \ [C/e]}\\ e &= 3.125 \cdot 10^{13}
+    \end{split}
+  \end{equation*}
+        
+  Observemos que es una cantidad relativamente pequeña comparada
+  con la densidad electrónica del cobre que es de $8.49 \cdot 10^{22}
+  [\#e/cm^3]$. Por esta razón, almacenar electrones en condensadores
+  como método de almacenamiento de energía masiva no es buena idea.
+  
+  Aunque los pendrives no tienen ningún problema en almacenar
+  bits mediante condensadores o eso se comenta en la clase...}
+
+\mksolution{
+  \begin{equation*}
+    \begin{split} E_c '(Q) &= V\\ \int_0^Q E_c '(q)dq &= \int_0^Q
+      v dq\\
+    \end{split}
+  \end{equation*} Usamos la ecuación $C = \dfrac{Q}{V_1-V_2}$  considerando que
+  la tensión inicial o $V_2 = 0$.
+  \begin{equation*}
+    \begin{split} E_c(Q)-E_c(0) &= \int_0^Q \dfrac{q}{c} dq\\
+      E_c(Q) &= \dfrac{1}{c} \int_0^Q q dq\\ E_c(Q) &= \dfrac{1}{2}
+      \dfrac{Q^2}{c} \\ E_c(Q) &= \dfrac{(\micro{5})^2}{(\micro{1})(2)} =
+      \nc{1.25}{-5} \ [Watts \cdot seg (Julios)]
+    \end{split}
+  \end{equation*}
+  \begin{equation*} E_c = \dfrac{(\nc{1.25}{-5}[Watts \cdot
+      seg])(1 \ [horas])}{3600 \ [seg]} = \nano{3.47} [Watts \cdot hora]
+  \end{equation*}}
+        
+\mkexercise{Por una resistencia superficial de grafito
+  (carbón) circula una corriente de $25 \ [mA]$, siendo la diferencia de
+  potencial aplicada entre sus extermos de $5 \ [V]$.
+  \begin{itemize}
+  \item ¿Cuál es su resistencia en ohmios?
+  \item Si la resistividad del grafito amorfo es de $1.6 \cdot
+    10^{-5} \ [\Omega \cdot m]$ y la resistencia es de tipo superficial
+    con un espesor $t = 1 \ [\mu m]$, y anchura de $W = 2 \ [mm]$. ¿Cuál
+    es la longitud $L$ de la resistencia?
+  \end{itemize}}
+
+\mksolution{
+  \begin{equation*}
+    \begin{split} V&=RI\\ R &= \dfrac{5\ [V]}{\micro{25} \
+        [A]} \\ R &= 200 \ [\Omega]
+    \end{split}
+  \end{equation*}}
+
+\mksolution{
+  \begin{equation*} R = \rho
+    \dfrac{L}{A} = \rho \dfrac{L}{t\cdot W} = R_s\dfrac{L}{W}
+  \end{equation*}
+  \begin{equation*} R_s = \dfrac{\rho}{t} =
+    \dfrac{\nc{1.6}{-5}}{\micro{1}} = 16 \ [Ohms]
+  \end{equation*}
+  \begin{equation*} L = \dfrac{R}{R_s} W = \dfrac{200 \
+      [ohms]}{16 \ [ohms]} 2 \ [mm] = 25 \ [mm] = 2.5 \ [cm]
+  \end{equation*}}
+        
+     
+     
