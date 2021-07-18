@@ -1,0 +1,96 @@
+\documentclass[a4paper,10pt]{article}
+%---------------------------------PACKAGES--------------------------------------
+\usepackage{fontspec} 					%for loading fonts
+\usepackage{xunicode,xltxtra,url,parskip} 	%for formatting
+\usepackage[usenames,dvipsnames]{xcolor} %easy shadows an colors
+\usepackage[big]{layaureo} 				% better formatting of the A4 page
+\usepackage{supertabular} 				%for Grades
+\usepackage{titlesec}					%custom \section
+\usepackage{verbatim}					%bcomments blocks
+\usepackage{hyperref}         %Setup hyperref package, and colours for links
+%---------------------------------CONFIG--------------------------------------
+\RequirePackage{color,graphicx} % for design
+\definecolor{linkcolour}{rgb}{0,0.2,0.6}
+\hypersetup{colorlinks,breaklinks,urlcolor=linkcolour, linkcolor=linkcolour}
+\defaultfontfeatures{Mapping=tex-text} %FONTS
+%\setmainfont[SmallCapsFont = Fontin SmallCaps]{Fontin}
+\setmainfont[
+SmallCapsFont = Fontin-SmallCaps.otf,
+BoldFont = Fontin-Bold.otf,
+ItalicFont = Fontin-Italic.otf
+]
+{Fontin.otf}
+\titleformat{\section}{\Large\scshape\raggedright}{}{0em}{}[\titlerule]
+\titlespacing{\section}{0pt}{3pt}{3pt}
+\hyphenation{im-pre-se}
+
+%--------------------BEGIN DOCUMENT----------------------
+\begin{document}
+\pagestyle{empty} % non-numbered pages
+\font\fb=''[cmr10]'' %for use with \LaTeX command
+
+%--------------------TITLE-------------
+\par{\centering
+		{\Huge\textsc{Jorge Benavides Macías} %% Name
+	}\bigskip\par}
+
+%--------------------SECTIONS-----------------------------------
+%Section: PERSONAL DATA
+\section{Informaci\'on personal}
+
+\begin{tabular}{rl}
+    \textsc{Lugar y fecha de nacimiento:} & Madrid, España  | 15 Noviembre de 2000 \\ %%Place of birth
+    \textsc{Direcci\'on:}   & Málaga(Torremolinos), España\\				%%Address
+    %%\textsc{Tel\'efono:}     & -- --- --- --- \\  %%number
+    \textsc{Correo:}     & \href{mailto:jorge2@hotmail.es}{jorge2@hotmail.es} | \href{mailto:jorge2@uma.es}{jorge2@uma.es} %%mail
+\end{tabular}
+
+%Section: EDUCATION
+\section{Educaci\'on}
+\begin{tabular}{rl}
+ \textsc{Enero} 2018 & Bachillerato en ciencias, \textbf{Unidad Educativa LEMAS}, Ecuador\\ %high school
+\textsc{Octubre} 2018 & Grado en \textsc{ Ingenier\'ia} en \textsc{Electr\'onica, rob\'otica y mecatr\'onica} \\ & \textsc{(4° cuatrimestre en curso)}, \normalsize\textbf{Universidad de M\'alaga}, España\\ %%Undergraduate degree
+\end{tabular}
+
+%Section: ACHIEVEMENTS
+\section{Certificados y logros}
+\begin{tabular}{rl}
+\textsc{Febrero} 2013 & Internet and Computing Core Certification - \textbf{IC3}, \textbf{Certiport}\\
+\textsc{Febrero} 2015 & Microsoft Office Specialist, \textbf{Microsoft} \\
+& \ Office PowerPoint  2010 \\
+& \ Office Word  2010 \\
+& \ Office Excel 2010 \\
+\textsc{Febrero} 2017 & Microsoft Office Specialist, \textbf{Microsoft} \\
+& \ Office Access 2013 \\
+\textsc{Julio} 2017 & Graphic Design \& Illustration using Adobe Illustrator, \textbf{Adobe} \\
+\textsc{Noviembre} 2017 & Participación en Las Olimpiadas de la Academia de las Ciencias Exactas, \textbf{Apol} \\
+& \ \textit{Medalla de bronce - Física} \\
+\textsc{Agosto} 2019 & Curso de productividad personal, \textbf{Google Actívate}
+\end{tabular}
+
+%Section: lANGUAGES
+\section{Idiomas}
+\begin{tabular}{rl}
+ \textsc{Español:}& Lengua nativa\\
+\textsc{English:}& Preliminary English Test \textsc{(PET)} -  \textsc{Level B1}, \textbf{Cambridge English Language Assessment}\\
+\end{tabular}
+
+%SKILLS
+\section{Habilidades}
+\begin{tabular}{rl}
+    Conocimiento b\'asico:& \textsc{CSS}, \textsc{Python}, \textsc{MATLAB}, \textsc{Mathematica} \\ & \textsc{Assembler language for MIPS architecture}\\
+ Conocimiento b\'asico - intermedio:& \textsc{C++}, \textsc{HTML}, \textsc{\fb\LaTeX}
+ \setmainfont[SmallCapsFont=Fontin-SmallCaps.otf]{Fontin.otf}\\
+\end{tabular}
+
+%HOBBIES
+\section{Actividades e intereses}
+Tecnolog\'ia, programaci\'on, Open-Source,Software libre, electr\'onica, rob\'otica, Arduino.  \\
+\textbf{Github}: \href{https://www.github.com/rhyloo}{\textsc{Rhyloo}}
+
+
+\end{document}
+
+
+%CV Sections inspired by:
+%http://stefano.italians.nl/archives/26
