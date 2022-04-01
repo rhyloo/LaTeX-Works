@@ -1,0 +1,15 @@
+\newpage
+% \addcontentsline{toc}{section}{Referencias}
+% \section*{Referencias}
+% \label{referencias_nucleo}
+% \makeatletter
+% \def\@bibitem#1{\item\if@filesw \immediate\write\@auxout
+%   {\string\bibcite{#1}{A\the\value{\@listctr}}}\fi\ignorespaces}
+% \def\@biblabel#1{[A{#1}]}
+% \makeatother
+% \printbibheading[title={Referencias},heading=bibintoc]
+\nocite{*}
+\newrefcontext[labelprefix=\thesection.]
+\printbibheading[title={Referencias},heading=subbibintoc]
+\printbibliography[heading=none,resetnumbers=true,keyword=infraestructura]
+\label{applastpage}

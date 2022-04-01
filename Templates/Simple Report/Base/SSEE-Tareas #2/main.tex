@@ -1,0 +1,92 @@
+\documentclass[11pt,a4paper]{article}
+\input{config_files/packages}
+\newcommand{\asignatura}{Sistemas Electrónicos}
+\newcommand{\actividad}{Tareas puntuables}
+\newcommand{\titulo}{\textbf{Virtex-6} de Xilinx}
+\newcommand{\subtitulo}{Tarea \# 2}
+\newcommand{\foto}{\includegraphics[scale=1.2]{images/virtex6.pdf}}
+\newcommand{\descripcion}{Resumen sobre las características más destacadas de la FPGA \textbf{Virtex-6} de Xilinx.}
+\newcommand{\curso}{2021-2022}
+\newcommand{\autor}{Jorge Benavides Macías }
+\begin{document}
+\input{config_files/portada}
+La \textbf{Virtex-6} es una FPGA, de la compañía Xilinx, orientada al alto rendimiento, sus 3 subfamilias de propósito general (LXT), procesamiento digital de señales (SXT) y mayor ancho de banda (HXT) son la prueba, la diferencia entre las subfamilias es la cantidad de componentes que tienen de algún dispositivo específico, por ejemplo el modelo dedicado al procesamiento de señales hará más operaciones por lo tanto necesitará más procesadores de señales (DSP48E1), el modelo HXT por su utilidad en la comunicación necesitará más \textit{SerDes} para transmitir correctamente los datos a altas velocidades y el de propósito general más Slices.
+
+\begin{figure}[h]
+    \centering
+    \includegraphics[scale=0.75]{images/Virtex-6 FPGA feature summary.pdf}
+    \caption{Tabla con las subfamilias de la \textbf{Virtex-6} y sus diferencias}
+\end{figure}
+
+Como detalle ``curioso'' los bloques de RAM siempre son de 36Kbits pero pueden usarse como dos independientes de 18Kbits.
+
+{\Large \textbf{CLBs, Slices y LUTs}}
+
+Las CLBs de la \textbf{Virtex-6} son muy parecidas a las de la Spartan-6 vistas en clase ya que presenta dos slices en diagonal, como se puede observa en la figura \ref{fig:slice_scheme} la conexión entre las Slices de distintas CLBs es vertical, manteniendo fija al columna. Cada Slice contiene 4 LUTs, 8 biestables tipo D, multiplexores y lógica de acarreo. Las SlicesM tienen RAM distribuida y registros de desplazamiento.\par
+\begin{wrapfigure}{r}{0.3\textwidth} 
+    \centering
+    \dummypic{scale = 0.45}{images/slice_scheme.pdf}{Relación entre las filas y columnas de las CLBs y Slices}{fig:slice_scheme}
+\end{wrapfigure}\par
+ Las LUTs tiene 6 entradas y 2 salidas, se pueden implementar funciones complejas de hasta 6 entradas por LUT e incluso \textbf{soporta dos funciones distintas de 5 entradas}, los multiplexores que contienen pueden usarse para generar funciones de 7 y 8 entradas, para funciones más grandes se combinan varias slices. \textbf{No hay conexión directa entre las slices para generar funciones de más de 8 entradas}.
+
+En la figura \ref{fig:bioestable} se observa que vienen con 4 funciones extra, puesta a 0 o a 1 en el inicio o forzar el cambio a 0 o a 1, es un detalle importante ya que en nuestros circuitos metemos un reset para iniciar los flip-flops y que almacenen un valor, con estas funciones se pueden omitir pasos y que el circuito inicie más rápido.
+\begin{wrapfigure}{l}{0.25\textwidth}
+  \vspace{-0.05\textwidth}
+    \dummypic{scale=1}{images/biestable_tipo_d.pdf}{Biestable tipo D}{fig:bioestable}
+    \vspace*{-0.05\textwidth}
+\end{wrapfigure}
+
+ Como he comentado antes las LUTs de \textbf{las SlicesM se pueden usar para generar bloques de memoria RAM}, se caracteriza por tener una escritura síncrona, además tienen hasta 11 modos distintos de configuración caracterizado por el tipo de puerto y la cantidad de bits que puede gestionar, \textbf{la lectura es asíncrona} pero puede hacerse síncrona utilizando algún tipo de almacenamiento en el Slice.
+ 
+El número de LUTs para realizar cualquier bloque de memoria es como máximo de 4 LUTs que comparado con el número de LUTs necesarios para realizar un multiplicador básico es insignificante, asi que puede ser una buena opción si nos falta memoria RAM.\par
+
+Podemos implementar memoria ROM si necesitamos cargar un programa de arranque del sistema o cargar constantes para ciertas operaciones (logaritmos, senos, cosenos, etc...), se pueden usar tanto las SlicesM como las SlicesL, por cada LUT se pueden implementar 8 bytes, las configuraciones son de 1, 2 y 4 LUTs.\par
+ \begin{wrapfigure}{r}{0.35\textwidth}
+    \flushleft
+    \vspace*{-0.05\textwidth}
+    \dummypic{scale=0.55}{images/registro_32_bits.pdf}{Configuración de un registro de 32 bits}{fig:register}
+\end{wrapfigure}\par
+La creación de registros, disponible en la SliceM, es un poco más complicada que la memoria RAM ya que requiere compensación en retardos y latencia, producidos tanto por las LUTs como por el tipo de conexión ya que no hay una conexión directa entre los Slices.
+
+La técnica de balanceo de caminos combinacionales usando flip-flops es lo que resuelve el problema incluso en los esquema del datasheet el flip-flop lo pone como opcional ya que queda a criterio de las necesidades del diseñador.
+
+Los multiplexores se pueden implementar como 4:1,8:1 y 16:1 en una sola slice.
+La lógica de acarreo es en cascada, se usa para la suma y la resta, lo que aumenta el rendimiento de las operaciones por estar incluida en la Slice, cuenta con 10 entradas y 8 salidas ambas independientes. Detalle importante es que la propagación del retardo de un sumador aumenta linealmente con el número de bits porque contiene más lógica de acarreo en cascada.
+
+{\Large \textbf{Clocking Resources}}
+
+Para el reloj, al menos en esta versión, se ha creado un concepto nuevo llamado regiones, el número de regiones depende del tamaño de la FPGA, oscila entre 6 y 18 en las más grandes, cada región está compuesta por ``40 CLBs high'' con un reloj horizontal en una fila en el centro; también diferencia entre relojes globales, de región y de entrada/salida.
+
+Las 32 lineas globales de reloj alimentan todos los dispositivos de la placa, en la línea del reloj solo hay un buffer para activar y desactivar la línea esto es para minimizar los efectos de retraso en las líneas más largas; 12 de las 32 líneas generales son para regiones y pueden ser arbitrarias por lo que podemos seleccionar las líneas que menos retraso generen en nuestro circuito.
+
+La \textbf{Virtex-6}, además de la estructura de árbol global que tiene, cuenta con una red de relojes regionales los cuales son distribuidos mediante buffers (BUFRs), estas redes se caracterizan por ser low-skew y de baja potencia de funcionamiento.
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[scale=0.6]{images/region_net_clock.pdf}
+    \caption{Buffer conduciendo el reloj a múltiples regiones}
+    \label{fig:buffer}
+\end{figure}
+
+{\Large \textbf{DSP48E1 Slice}}
+
+\begin{figure}[h]
+    \centering
+    \includegraphics[scale=0.6]{images/DSP48E1.pdf}
+    \caption{\textbf{Virtex-6} FPGA DSP48E1 Slice}
+    \label{fig:DSO48E1}
+\end{figure}
+
+El DSP48E1 que hay en la figura \ref{fig:DSO48E1} hereda la mayoría de características de su versión anterior presente en la Virtex-5, las nuevas características son: Un pre-sumador en la entrada D con el objetivo de mejorar la velocidad de procesamiento, generando el acarreo durante el proceso de cálculo, un control para balancear el cambio dinámico de operaciones. Está de más decir que comparado con su homónimo de la Spartan-6 es mucho más complejo.
+
+Soporta operaciones en cascada y secuenciales lo que lo hace excelente para operar con la transformada rápida de Fourier, números en coma flotante, operaciones básicas, contadores y muchas otras aplicaciones.\par
+\begin{wrapfigure}{r}{0.35\textwidth}
+    \dummypic{scale=0.5}{images/simplife_DSP48.pdf}{Simplificación del funcionamiento de un DSP}{fig:DSP48simp}
+\end{wrapfigure}\par
+Simplificando el esquema el circuito, obtenemos el de la figura \ref{fig:DSP48simp}, el camino que siguen los datos es muy sencillo; entran dos datos A y B que son multiplicados y el resultado es sumado o restado con el C, estas operaciones son realizadas por un pre-sumador de 25 bits, un multiplicador de 25 x 18 bits (si lo sumamos da 43 bits), estos bits son extendidos hasta 48 que es el ancho de las entradas del multiplexor, cuando la operación necesaria es operación lógica hay entradas lógicas de todo a 1 o 0 para los multiplexores.
+
+\fontsize{7.5}{1.2}\selectfont
+\nocite{*}
+\bibliographystyle{IEEEtran}
+\bibliography{references}
+\end{document}

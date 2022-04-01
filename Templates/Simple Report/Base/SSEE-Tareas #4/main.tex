@@ -1,0 +1,78 @@
+\documentclass[11pt,a4paper]{article}
+\input{config_files/packages}
+\newcommand{\grado}{Grado en ingeniería en electrónica, robótica y mecatrónica}
+\newcommand{\asignatura}{Sistemas Electrónicos}
+\newcommand{\actividad}{Tareas puntuables}
+\newcommand{\titulo}{NXP/MSC8154E}
+\newcommand{\subtitulo}{Tarea \# 4}
+\newcommand{\descripcion}{Análisis del DSP MSC8154E de la empresa NXP.}
+\newcommand{\foto}{\includegraphics[scale=1]{images/MSC8154E_PRDIMG.png}}
+\newcommand{\curso}{2021-2022}
+\newcommand{\autor}{Jorge Benavides Macías \\ 05306948-C}
+\begin{document}
+\input{config_files/portada}
+El dispositivo MSC8454E es un DSP de gama alta enfocado en las comunicaciones inalámbricas, se puede programar en C/C++ o en ensamblador. Como se observa en la figura \ref{fig:diagram_block} el núcleo del DSP tiene varios bloques de caché o memoria lo cual indica una arquitectura Harvard, cuenta con los periféricos de comunicación I2C, UART, IO y Clocks vistos en clase, además tiene algunos extra que dotan de distintas funcionalidades al dispositivo. 
+
+Me gustaría destacar que cuenta con un subsistema que incluye un procesador RISC dual, independiente, que procesa las conexiones de dos puertos Ethernet y un SPI, me parece interesante ya que esto le da un nuevo uso a los DSP que no se me había ocurrido antes, la utilización de DSPs en módems o como se especifica en el párrafo inicial en comunicaciones inalámbricas que generalmente se asocian a Bluetooth o Wifi; también cuenta con dos controladores DDR lo cual es útil cuando se necesita leer o almacenar datos muy grandes. 
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[scale=0.8]{images/diagram_block.pdf}
+    \caption{Diagrama de bloques del DSP}
+    \label{fig:diagram_block}
+\end{figure}
+
+{\Large \textbf{Interrupt Handling}}
+
+Cuenta con un sistema de interrupciones internas y externas, además cuenta con la capacidad de emitir interrupciones a dispositivos externos; para las interrupciones externas hay 222 disponibles que se pueden configurar como enmascarables o no, como detalle más importante las interrupciones pueden ser tanto asíncronas como síncronas. Hay 3 niveles de gestión de interrupciones y cada una tiene características distintas.
+\begin{itemize}
+    \item \textbf{Interrupciones globales}
+    
+    Permite la generación de interrupciones virtuales, interrupciones virtuales no enmascarables que van a los núcleos e interrupciones a dispositivos externos.
+    \item \textbf{Interrupciones generales}
+    
+    Dirige las interrupciones raras al núcleo.
+    \item \textbf{Controlador de interrupción programable integrado (EPIC).}
+    
+    Asocia las interrupciones a un núcleo teniendo en cuenta la prioridad de las interrupciones. Cuenta con 256 interrupciones, incluyendo fuentes internas. 
+\end{itemize}
+
+La gestión de las interrupciones, dentro del dispositivo, cuenta con un sistema basado en niveles, dónde la fuente que genera la interrupción y como llega esta señal al núcleo son lo que generan la clasificación. 
+
+Este sistema es más eficiente porque las interrupciones generadas dentro del núcleo son mucho más rápidas que las que puede generar el puerto UART o el IO ya que la interrupción pasa por otros bloques como el ``bloque general de configuración'' y la señal indirectamente se retrasa generando prioridades, además hay un bloque de registros que almacena estas señales de tal manera que siempre se procesan con prioridad. 
+
+Este sistema queda reflejado en la siguiente figura.
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[scale=0.85]{images/diagram_flow.pdf}
+    \caption{Flujo de gestión de interrupciones}
+    \label{fig:interrupt_handling_flow}
+\end{figure}
+
+{\Large \textbf{Clocks}}
+
+Este modelo de DPS cuenta con 5 PLLs (phase-locked loop).
+
+Dos ellos tiene como objetivos sincronizar los relojes usados en el SerDes, un conjunto de bloques usados para pasar información de serie a paralelo y viceversa, la transmisión es a alta velocidad y se usa en el HSSI (una interfaz de transmisión serie a alta velocidad).
+
+Los otros 3 PLLs tienen un uso genérico que se distribuye por todo el dispositivo, para controlar buses internos, subsistemas del núcleo, subsistemas generales, la memoria tanto caché como RAM e interfaces entrada/salida.
+
+Es normal que con el aumento de la complejidad del dispositivo y las velocidades con las que se trabaja se precisen de tantos PLLs, incluso en versiones actuales la cantidad debe ser mucho mayor, puesto que el reloj tiene que distribuirse por muchas más zonas y pasar por más dispositivos el posible desfase que puede generarse es un problema bastante importante que requiere de nuevas topologías y dispositivos controladores para evitarlo.
+
+{\Large \textbf{Hardware Semaphores}}
+
+Es una variable de tipo abstracto que permite el acceso a recursos compartidos de múltiples procesos, es útil en la programación paralela o multihilo. Este dispositivo cuenta con 8 semáforos y como se observa en la figura \ref{fig:hardware_semaphoresl} los buses son de 8 bits por lo tanto usan una codificación parecida a la ``one-hot'', cuyo nombre es ``one-lock'', el cero representa que no está bloqueado, y el resto de combinaciones posibles, el one-lock se caracteriza porque una vez que está bloqueado, dicho bloqueo no puede cambiarse por otro, a menos que pase a estar libre.
+
+\begin{figure}[H]
+    \centering
+    \includegraphics{images/hardware_semaphores.pdf}
+    \caption{Diagramas de bloques del Hardware Semaphores.}
+    \label{fig:hardware_semaphoresl}
+\end{figure}
+
+\fontsize{7.5}{1.2}\selectfont
+\nocite{*}
+\bibliographystyle{IEEEtran}
+\bibliography{references}
+\end{document}

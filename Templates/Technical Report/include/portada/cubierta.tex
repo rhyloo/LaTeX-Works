@@ -1,0 +1,100 @@
+\newgeometry{ignoreall,top=2cm,outer=2cm,inner=2cm}
+\begin{titlepage}
+
+% Offset horizontal para toda la portada
+\newlength{\centeroffset}
+\setlength{\centeroffset}{-0.5\oddsidemargin}
+\addtolength{\centeroffset}{0.5\evensidemargin}
+\thispagestyle{empty}
+
+%\pagecolor{\colorfondo}
+
+\tikzstyle{place} = []
+\begin{tikzpicture}[overlay, remember picture, inner sep=0pt, outer sep=0pt]
+  \node[place] (northeast) at ($(current page.north east)$) {};
+  \node[place] (northwest) at ($(current page.north west)$) {};
+  \node[place] (southeast) at ($(current page.south east)$) {};
+  \node[place] (southwest) at ($(current page.south west)$) {};
+\def\FuenteTamano{30pt}
+\pgfmathsetmacro{\myshift}{(\longitudtitulo)}
+\pgfmathsetmacro{\myshifte}{\longitudtitulo)}
+
+\node[place, rotate = 0, below left= of northeast, anchor=center, label={[rotate=0, xshift = 0 em]left: {\FuenteTitulo\fontsize{\FuenteTamano}{0pt}\selectfont\color{black}\identificadorx}}] (referencia3) {};
+
+\node[place, rotate = 0, below  = 7.2em of referencia3, anchor=east] (referencia4) {\logox};
+
+\node[place, rotate = 0, below right = of northwest, anchor=center, label={[rotate=0, xshift = 0 em]right: {\FuenteTitulo\fontsize{\FuenteTamano}{0pt}\selectfont\color{black} \seguridadx}}] (referencia5) {};
+
+\node[place, rotate = 0, below right= of northwest, anchor=center, label={[rotate=0, yshift = -10 em]below: {\rotatebox{90}{\FuenteTitulo\fontsize{\FuenteTamano}{110pt}\selectfont\color{black}\identificadorx}}}] (referencia1) {};
+
+\node[place, rotate = 0, right= of referencia1, anchor=center, label={[rotate=0, yshift = -12 em]below: {\rotatebox{-90}{\FuenteTitulo\fontsize{\FuenteTamano}{110pt}\selectfont\color{black}\identificadorx}}}] (referencia2) {};
+
+\draw[black,line width=4pt, right = of referencia1] (-0.865,0.8650) -- (-0.865,-30);
+\draw[black,line width=4pt, below = of referencia5] (-2,0.8650) -- (18,0.865);
+
+\fill[black] (current page.south west) rectangle ++(\paperwidth,7cm);
+
+\node[place, rotate = 0, above left = of southeast, anchor=east] (referencia3) {\FuenteTitulo\fontsize{\FuenteTamano}{0pt}\selectfont\color{white} \seguridadx};
+\end{tikzpicture}
+
+\def\FuenteTamano{50pt}
+% Titulo y subtitulo
+\hspace{0pt}
+\vfill
+\hspace{0.8cm}
+\begin{tabular}{p{16cm}}
+\centering
+ \begin{spacing}{\interlinportada}
+ \def\FuenteTamano{45pt}
+{\raggedright{\FuenteTitulo\fontsize{\FuenteTamano}{110pt}\selectfont\color{black} \titulox}}
+
+\def\FuenteTamano{35pt}
+{\raggedright{\FuenteTitulo\fontsize{\FuenteTamano}{110pt}\selectfont\color{black} \subtitulox }}
+\def\FuenteTamano{50pt}
+ \vspace{-7em}
+ \end{spacing}
+ \end{tabular}
+ \hfill
+ \vspace{2cm}
+ \vfill
+ \hspace{0pt}
+
+
+% Información personal y fecha
+\begin{textblock*}{1.35\textwidth}(-1.35cm,-2.30cm)% Ancho - Pos X,PosY
+
+\begin{figure}[H]
+\begin{minipage}[t]{0.32\textwidth}
+{\FuentePortada \fontsize{\TamOtros}{30pt}\selectfont\color{white}\tutorx}
+\vfill
+[\TamOtrosIn]
+
+{\FuentePortada \fontsize{\TamOtros}{50pt}\selectfont\color{white}\autorx}
+\vfill
+[\TamOtrosIn]
+\vfill
+{\FuentePortada \fontsize{\TamOtros}{30pt}\selectfont\color{white}\fechax}
+[\TamOtrosIn]
+\end{minipage}
+\begin{minipage}[t]{0.5\textwidth}
+\begin{flushright}
+{\FuentePortada \fontsize{\TamTrabajo}{35pt}\selectfont\color{white}\organizacionx} 
+
+\vspace*{3em}
+{\FuentePortada \fontsize{\TamTrabajo}{45pt}\selectfont\color{white}\tipox}
+\end{flushright}
+\end{minipage}
+\end{figure}
+
+
+% {\FuentePortada \fontsize{\TamOtros}{30pt}\selectfont\color{white} Atuores:}
+% \\[\TamOtrosIn]
+
+% {\FuentePortada \fontsize{\TamOtros}{30pt}\selectfont\color{white} }
+% \\[\TamOtrosIn]
+
+% \ifx\miTutorB\undefined \else {\FuentePortada \fontsize{\TamOtros}{30pt}\selectfont\color{white}\miTutorB} \fi
+% \\[\TamOtrosIn]\\[\TamOtrosIn]
+\end{textblock*}
+\end{titlepage}
+\cleardoubleoddemptypage

@@ -1,0 +1,19 @@
+\begin{minted}[baselinestretch=1.2, bgcolor=matlab_background, fontsize=\footnotesize, linenos=true, numbersep=0pt]{matlab}
+
+    figure(1);
+    T0 = 25;
+    hold on;
+    plot(T,rho,'o');
+    
+    % Al ser un polinomio lineal se le indica que el grado del mismo es 1
+    p = polyfit(T,rho,1);
+    rho_approx = polyval(p,T);
+    
+    % Configuraciones para gráficar
+    plot(T,rho_approx);
+    xlabel('$T(^\circ C)$','Interpreter','LaTeX','FontSize',16);
+    ylabel('$\rho$(kg/m$^3$)','Interpreter','LaTeX','FontSize',16);
+    set(gca,'TickLabelInterpreter','Latex','FontSize',16);asasasa asas a asa sa sas asas  asas sasa asa sa asa s
+    
+    
+\end{minted}

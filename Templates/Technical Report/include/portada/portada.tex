@@ -1,0 +1,84 @@
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Plantilla TFG/TFM
+% Escuela Politécnica Superior de la Universidad de Alicante
+% Realizado por: Jose Manuel Requena Plens
+% Contacto: info@jmrplens.com / Telegram:@jmrplens
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+\begin{titlepage}
+
+% Márgenes de esta pagina modificados
+\newgeometry{ignoreall,top=2cm,bottom=2cm}
+\setlength{\centeroffset}{-0.5\oddsidemargin}
+\addtolength{\centeroffset}{0.5\evensidemargin}
+\thispagestyle{empty}
+
+\AddToShipoutPictureBG*{%
+\begin{tikzpicture}[overlay,remember picture]
+\draw[line width=10pt]
+    ($ (current page.north west) + (2cm,-2cm) $)
+    rectangle
+    ($ (current page.south east) + (-2cm,2cm) $);
+\draw[line width=1.5pt]
+    ($ (current page.north west) + (2.2cm,-2.2cm) $)
+    rectangle
+    ($ (current page.south east) + (-2.2cm,2.2cm) $);
+\end{tikzpicture}
+}
+
+\FuenteTitulo
+\centering
+\vspace*{5em}
+{\fontsize{30pt}{0pt}\selectfont \seguridadx}
+\vfill
+{\fontsize{25pt}{0pt}\selectfont \identificadorx}
+\vfill
+{\fontsize{25pt}{0pt}\selectfont \organizacionx}
+\vfill
+{\fontsize{25pt}{0pt}\selectfont \ul\titulox}
+\vfill
+% {\fontsize{20pt}{0pt}\selectfont \subtitulox}
+% \vfill
+{\fontsize{20pt}{0pt}\selectfont \autorx}
+
+\vspace{1em}
+{\fontsize{15pt}{0pt}\selectfont \asociacionx}
+\vfill
+{\fontsize{10pt}{0pt}\selectfont \fechax}
+\vfill
+{\fontsize{25pt}{0pt}\selectfont \tipox}
+\vfill
+{\fontsize{30pt}{0pt}\selectfont \seguridadx}
+\vspace*{5em}
+\vfill
+
+% \def\FuenteTamano{50pt}
+% % Titulo y subtitulo
+% \vspace*{5em}
+% \def\FuenteTamano{30pt}
+% {\FuenteTitulo\fontsize{\FuenteTamano}{0pt}\selectfont\color{black} \seguridadx}
+% \vfill
+% \def\FuenteTamano{25pt}
+% {\FuenteTitulo\fontsize{\FuenteTamano}{0pt}\selectfont\color{black} \identificadorx}
+% \vfill
+% {\FuentePortada \fontsize{\TamTrabajo}{35pt}\selectfont\color{black}\organizacionx}
+% \vfill
+% {\raggedright{\FuenteTitulo\fontsize{\FuenteTamano}{35pt}\selectfont\color{black} \titulox}}
+% \vfill
+% % {\raggedright{\FuenteTitulo\fontsize{\FuenteTamano}{110pt}\selectfont\color{black} \subtitulox }}
+% % \vfill
+% {\FuentePortada \fontsize{\TamTrabajo}{25pt}\selectfont\color{black} \autorx}
+% \vfill
+% {\FuentePortada \fontsize{\TamOtros}{30pt}\selectfont\color{black}\fechax}
+% \vfill
+% {\FuentePortada \fontsize{\TamTrabajo}{30pt}\selectfont\color{black}\tipox}
+% \vfill
+% \def\FuenteTamano{30pt}
+% {\FuenteTitulo\fontsize{\FuenteTamano}{0pt}\selectfont\color{black} \seguridadx}
+% \vspace{2cm}
+% \vfill
+\end{titlepage}
+
+% A partir de aquí aplica los márgenes establecidos en configuracioninicial.tex
+\restoregeometry

@@ -1,0 +1,185 @@
+\usepackage{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage[spanish]{babel}
+\usepackage{amsmath}
+\usepackage{amsfonts}
+\usepackage{fancyhdr}
+\usepackage{amssymb}
+\usepackage[font=scriptsize,labelfont=bf]{caption}
+\usepackage{lmodern}
+\usepackage[nottoc,numbib]{tocbibind}
+\usepackage{xcolor}
+\usepackage{mdframed}
+\usepackage{wrapfig}
+\usepackage{multirow}
+\usepackage{lipsum}
+\usepackage{multicol}
+\usepackage{scrextend}
+\usepackage{minted}
+\definecolor{matlab_background}{rgb}{0.99,0.99,0.86}
+%https://mmoredo.github.io/latex-color-converter/
+\usepackage{tikz}
+\usetikzlibrary{positioning}
+\usepackage{float}
+\usepackage{graphicx}
+\usepackage[most]{tcolorbox}
+\usepackage{tikzpagenodes}
+\usepackage[absolute]{textpos}
+\usepackage{colortbl}
+\usepackage{array}
+\usepackage[hidelinks]{hyperref}
+\usepackage[makeroom]{cancel}
+\usepackage{eso-pic}
+\usepackage[a4paper,left=3cm,right=2cm,top=2.5cm,bottom=2.5cm]{geometry}
+\usepackage[final]{pdfpages}
+\usepackage{float}
+\usepackage{fancyhdr}
+
+% \newtcolorbox[blend into=figures]{codeblock}[2][]{colback=matlab_background,colframe=my_blue,title={#2},#1}
+
+\newtcolorbox[auto counter]{codeblock}[2][]{%
+colback=matlab_background,colframe=my_blue,
+title=Código~\thetcbcounter. #2,#1}
+
+\pagestyle{empty}
+\fancyhf{}
+% \lhead{\asignatura}
+% \rhead{Jorge Benavides Macías}
+\rfoot{\thepage}
+%\renewcommand{\headrulewidth}{0.4pt}% Default \headrulewidth is 0.4pt
+\Setlength{\headheight}{16pt}
+\setlength{\parskip}{1em}
+\setlength{\parindent}{0em}
+\definecolor{my_blue}{RGB}{0, 46, 93}
+\definecolor{my_white}{RGB}{255, 255, 255}
+\definecolor{Prune}{RGB}{0,46,93}
+
+\newcommand*{\dummypic}[4]{%
+\setlength{\fboxsep}{0pt}%
+\begin{minipage}[t][0.2\textwidth][c]{0.25\textwidth}
+\centering \includegraphics[#1]{#2}
+\caption{#3}
+\label{#4}
+\end{minipage}%
+}
+
+
+\newcommand*{\datosportada}[9]{
+\newcommand*{\grado}{#1}
+\newcommand*{\asignatura}{#2}
+\newcommand*{\actividad}{#3}
+\newcommand*{\titulo}{#4}
+\newcommand*{\subtitulo}{#5}
+\newcommand*{\descripcion}{#6}
+\newcommand*{\foto}{\includegraphics[scale=1.2]{#7}}
+\newcommand*{\curso}{#8}
+\newcommand*{\autor}{#9}
+}
+
+\newcommand*{\portada}[0]{
+\fontfamily{fvs}\fontseries{m}\fontsize{22}{1.2}\selectfont
+\newgeometry{top=0cm, bottom=0cm, right=0cm, left=0cm}
+\AddToShipoutPictureBG*{%
+ \AtPageLowerLeft{%
+\fontfamily{fvs}\fontseries{m}\fontsize{22}{1.2}\selectfont
+\begin{tikzpicture}
+    \clip (0,0) rectangle (\paperwidth,\paperheight);
+    \fill[color = my_blue] (0,0) rectangle (120.664pt,\paperheight);
+    \fill[my_white] (0.50,0.2) rectangle (0.63, 29.5);
+    \fill[my_white] (0.75,0.2) rectangle (0.88, 29.5);
+    \fill[my_white] (1.20,0.2) rectangle (1.33, 29.5);
+    \fill[my_white] (1.70,0.2) rectangle (1.83, 29.5) node (first){};
+    \color{white}
+    \node [right=of first, yshift=-0.78\paperheight] (subject) {\hspace*{-35pt}\rotatebox{90}{\textbf{\actividad}}};
+    \fontsize{14}{26}
+    \color{white}
+    \node [right=of first, yshift=-0.80\paperheight]{\hspace*{3pt}\rotatebox{90}{\asignatura}};
+\end{tikzpicture}}}
+
+\vspace*{20pt}
+
+\begin{minipage}[t]{0.2017\paperwidth}
+\end{minipage}
+\hfill
+\begin{minipage}[c]{0.7983\paperwidth}
+\begin{center}
+\includegraphics[scale=0.41]{images/logo_junto.pdf}
+\end{center}
+%\begin{center}
+%\includegraphics[scale=0.90]{images/logo_uma.pdf}
+%\hspace{0.2\textwidth}
+%\includegraphics[scale=0.40]{images/logo_eii.pdf}
+%\end{center}
+\end{minipage}
+
+
+\begin{minipage}[t]{0.2017\paperwidth}
+\end{minipage}
+\hfill
+\begin{minipage}[t]{0.7983\paperwidth}
+    \vspace{10mm} % à régler éventuellement
+    \color{Prune}
+    \fontfamily{fvs}\fontseries{m}\fontsize{22}{26}\selectfont
+    \centering
+    \grado\par
+    \vspace{30pt}
+    \textbf{\titulo}\par
+    \normalsize
+    \vspace{20pt}
+    \color{black}
+    \large
+    \textbf{\subtitulo}
+\end{minipage}
+
+\vspace{20pt}
+
+\begin{minipage}[t]{0.2017\paperwidth}
+\end{minipage}
+\hfill
+\begin{minipage}[t]{0.7983\paperwidth}
+    \large
+    \centering
+    \descripcion
+\end{minipage}
+
+\vspace*{-20pt}
+
+\begin{minipage}[t]{0.2017\paperwidth}
+\end{minipage}
+\hfill
+\begin{minipage}[t]{0.7983\paperwidth}
+    \centering
+    \footnotesize
+    \vspace{15mm}
+    \begin{figure}[H]
+    \centering
+        \foto
+    \end{figure}
+\end{minipage}
+
+\vspace*{40pt}
+
+\begin{minipage}[t]{0.3\paperwidth}
+\end{minipage}
+\hfill
+\begin{minipage}[t]{0.6\paperwidth}
+    \large
+    \flushleft \textbf{Práctica realizada por:}
+    \bigskip
+    \normalsize
+    \begin{tabular}{|p{8cm}}
+        \arrayrulecolor{Prune}
+        \autor
+    \end{tabular}
+    \flushright \textbf{Curso 2021-2022}
+    \bigskip
+    \hspace*{20mm}
+    \vspace{15mm}
+\end{minipage}
+
+\fontsize{11}{1.2}\selectfont
+\normalfont
+\restoregeometry
+\clearpage %% old habits die hard ;-)
+\newpage
+}

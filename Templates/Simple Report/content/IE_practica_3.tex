@@ -1,0 +1,80 @@
+\documentclass[11pt,a4paper]{article}
+\input{config/packages}
+\input{config/vars_n_commands}
+\input{config/style}
+
+\hypersetup{
+ pdfauthor={},
+ pdftitle={},
+ pdfkeywords={},
+ pdfsubject={},
+ pdfcreator={}, 
+ pdflang={spanish}
+ }
+
+ 
+\begin{document}
+
+\grade{Grado en ingeniería en electrónica, robótica y mecatrónica}
+\subject{Instrumentación de electrónica}
+\activity{Prácticas}
+\title{Sensores de fuerza y flexión. Lazo de control de temperatura cón un termistor.}
+\subtitle{}
+\description{Práctica \# 3}
+\image[scale = 0.1]{images/IE_practica_3_sensor_presion.jpeg}
+\author{Gonzalo Guillamón Martin \\ Jorge Benavides Macías}
+\date{\today}
+
+\portada
+
+\subsection*{Cuestión 1}
+
+El primer montaje consiste en controlar la velocidad del ventilador mediante un sensor de flexión y un sensor de presión. Para ello se monta el circuito que se expone en la guía de la practica y se carga el programa base dado por el profesor en Psoc. Una vez realizado lo anterior, se comprueba que este correctamente montado y se pone en funcionamiento el circuito para responder a la pregunta que se nos expone en la guía.
+
+\begin{figure}[h]
+    \centering
+    \includegraphics[scale = 0.15]{images/IE_practica_3_sensor_presion.jpeg}
+    \caption{Circuito del sensor de presión o flexión.}
+    \label{a}
+\end{figure}
+
+\textbf{Comenta qué diferencias observas entre el comportamiento de ambos sensores.}
+
+Como se puede observar en la \autoref{sensor_presion_resistance_force} la resistencia del sensor varia con la fuerza aplicada, es decir, a una fuerza de $0 \ [g]$ el sensor actúa como una resistencia de alta impedancia, por lo tanto el ventilador no se movería, sin embargo con una fuerza aplicada su resistencia va decreciendo hasta ser un cortocircuito que en el circuito se aprecia fácilmente con el movimiento del ventilador.
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[scale=1]{images/IE_practica_3_sensor_presion_datasheet.pdf}
+    \caption{Resistencia vs. Fuerza del sensor de presión.}
+    \label{sensor_presion_resistance_force}
+\end{figure}
+
+El sensor de flexión trabaja de forma inversa al sensor de presión; en el circuito sin ningún tipo de actuación sobre él actúa como un cortocircuito y cuando se aplica una flexión la velocidad del ventilador disminuye porque la resistencia del sensor aumenta, en el datasheet no tenemos una gráfica de funcionamiento, pero es la inversa de la \autoref{sensor_presion_resistance_force}.
+
+
+\subsection*{Cuestión 2}
+El segundo montaje es un termostato, el cual se encenderá el ventilador si la temperatura medida supera cierto umbral. Para ello se monta el circuito que se expone en la guía de la práctica y se carga el programa base dado por el profesor en Psoc. Una vez realizado lo anterior, se comprueba que este correctamente montado y se pone en funcionamiento el circuito, esta vez tendremos que esperar que el circuito gane poco a poco la temperatura hasta que se encienda el ventilador y se comprobara que le ventilador se apague cuando la temperatura del circuito baje del umbral establecido.
+
+\begin{figure}[h]
+    \centering
+    \includegraphics[scale=0.15]{images/IE_practica_3_sensor_temperatura.jpeg}
+    \caption{Circuito del montaje.}
+    \label{b}
+\end{figure}
+
+El tercer montaje consiste en ver como se mide la temperatura en le termistor NTC integrado en el ventilador. Para ello se monta el circuito que se expone en la guía de la práctica y se carga el programa base dado por el profesor en Psoc. Una vez realizado lo anterior, se comprueba que este correctamente montado y se pone en funcionamiento el circuito, ahora se deberá encender el osciloscopio y realizar ciertos ajustes en el mismo para que la señal se distinga con claridad, en nuestro caso, ajustamos la escala de tiempo a 2 s, la escala de voltaje a 5 V para el ventilador y de 2 V para la temperatura del termistor NTC, por último, añadimos un filtro de ruido de 2.90 KHz el cual dejaba una señal más limpia. Una vez realizado todo lo anterior podemos responder a la segunda pregunta.
+
+\textbf{¿Cuál es la relación entre la evolución de la temperatura medida por el termistor NTC y la temperatura real del circuito?}
+
+Tal y como se puede observar en las diferentes curvas del ha dado el osciloscopio, al medir la temperatura del termistor NTC junto con el voltaje que recibe el ventilador que indica el funcionamiento de este, se puede observar que la curva de temperatura aumenta cuando se enciende el ventilador, y disminuye cuando este se apaga. Esto indica que el termistor NTC funciona correctamente ya que NTC significa ``Negative Temperature Coefficient'' que nos indica que este medirá la temperatura de forma inversa, lo que también confirma el buen funcionamiento del circuito montado. Respondiendo a la pregunta propuesta, la relación entre la temperatura medida por el termistor NTC y la temperatura del circuito real es inversa.
+
+
+\begin{figure}[h]
+    \centering
+    \includegraphics[scale = 0.85]{images/IE_practica_3_osciloscopio_sensor_temperatura.PNG}
+    \caption{Salida del osciloscopio.}
+    \label{c}
+\end{figure}
+
+
+\end{document}

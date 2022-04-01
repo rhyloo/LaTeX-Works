@@ -1,0 +1,37 @@
+%% Primera grafica
+clc;
+clear;
+close all;
+flow = [0 1 2 3 4];
+h = [66 60 48 30 1];
+
+plot(flow, h,'b--');
+grid on;
+
+aproximacion = polyfit(flow,h, 2);
+aproximacion2 = [-3.7147 0 65.7714];
+
+hold on;
+x = 0:0.0001:4;
+plot(x,polyval(aproximacion,x));
+plot(x,polyval(aproximacion2,x));
+title('Ecuación de la bomba');
+xlabel('Caudal (l/s)');
+ylabel('Altura (m)');
+legend("Ensayo","Aproximación")
+set(gcf,'color','white')
+exportgraphics(gcf,'vectorfig.pdf','ContentType','vector')
+
+@misc{alma991000344529704986,
+author = {Boxer, G.},
+address = {Argentina [etc},
+booktitle = {Mecánica de fluidos},
+isbn = {0201625504},
+keywords = {Mecánica de fluidos},
+language = {spa},
+publisher = {Addison-Wesley Iberoamericana},
+series = {Cuadernos de trabajo para ingeniería},
+title = {Mecánica de fluidos },
+year = {1994},
+}
+

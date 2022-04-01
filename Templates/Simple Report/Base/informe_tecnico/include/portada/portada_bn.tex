@@ -1,0 +1,47 @@
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Plantilla TFG/TFM
+% Escuela Politécnica Superior de la Universidad de Alicante
+% Realizado por: Jose Manuel Requena Plens
+% Contacto: info@jmrplens.com / Telegram:@jmrplens
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+\begin{titlepage}
+
+% Márgenes de esta pagina modificados
+\newgeometry{ignoreall,top=2cm,bottom=2cm}
+\setlength{\centeroffset}{-0.5\oddsidemargin}
+\addtolength{\centeroffset}{0.5\evensidemargin}
+\thispagestyle{empty}
+
+\AddToShipoutPictureBG*{%
+\begin{tikzpicture}[overlay,remember picture]
+\draw[line width=10pt]
+    ($ (current page.north west) + (2cm,-2cm) $)
+    rectangle
+    ($ (current page.south east) + (-2cm,2cm) $);
+\draw[line width=1.5pt]
+    ($ (current page.north west) + (2.2cm,-2.2cm) $)
+    rectangle
+    ($ (current page.south east) + (-2.2cm,2.2cm) $);
+\end{tikzpicture}
+}
+
+\def\FuenteTamano{50pt}
+% Titulo y subtitulo
+\centering
+\vspace*{5em}
+\def\FuenteTamano{30pt}
+{\FuenteTitulo\fontsize{\FuenteTamano}{0pt}\selectfont\color{black} \seguridadx}
+\vfill
+{\FuenteTitulo\fontsize{\FuenteTamano}{110pt}\selectfont\color{black}\titulox }
+\vfill
+{\FuenteTitulo\fontsize{\FuenteTamano}{110pt}\selectfont\color{black}\titulox }
+ \vspace{2cm}
+ \vfill
+
+
+\end{titlepage}
+
+% A partir de aquí aplica los márgenes establecidos en configuracioninicial.tex
+\restoregeometry

@@ -1,0 +1,96 @@
+\fontfamily{fvs}\fontseries{m}\fontsize{22}{1.2}\selectfont
+\newgeometry{top=0cm, bottom=0cm, right=0cm, left=0cm}
+\AddToShipoutPictureBG*{%
+ \AtPageLowerLeft{%
+\fontfamily{fvs}\fontseries{m}\fontsize{22}{1.2}\selectfont
+\begin{tikzpicture}
+    \clip (0,0) rectangle (\paperwidth,\paperheight);
+    \fill[color = my_blue] (0,0) rectangle (120.664pt,\paperheight);
+    \fill[my_white] (0.50,0.2) rectangle (0.63, 29.5);
+    \fill[my_white] (0.75,0.2) rectangle (0.88, 29.5);
+    \fill[my_white] (1.20,0.2) rectangle (1.33, 29.5);
+    \fill[my_white] (1.70,0.2) rectangle (1.83, 29.5) node (first){};
+    \color{white}
+    \node [right=of first, yshift=-0.78\paperheight] (subject) {\hspace*{-35pt}\rotatebox{90}{\textbf{\actividad}}};
+    \fontsize{14}{26}
+    \color{white}
+    \node [right=of first, yshift=-0.80\paperheight]{\hspace*{3pt}\rotatebox{90}{\asignatura}};
+\end{tikzpicture}}}
+
+\vspace*{20pt}
+
+\begin{minipage}[t]{0.2017\paperwidth}
+\end{minipage}
+\hfill
+\begin{minipage}[c]{0.7983\paperwidth}
+\begin{center}
+\includegraphics[scale=0.41]{images/logo_junto.pdf}    
+\end{center}
+%\begin{center}
+%\includegraphics[scale=0.90]{images/logo_uma.pdf}
+%\hspace{0.2\textwidth}
+%\includegraphics[scale=0.40]{images/logo_eii.pdf}    
+%\end{center}
+\end{minipage}
+
+
+\begin{minipage}[t]{0.2017\paperwidth}
+\end{minipage}
+\hfill
+\begin{minipage}[t]{0.7983\paperwidth}
+\flushright
+\vspace{10mm} % à régler éventuellement
+\color{Prune}
+\fontfamily{fvs}\fontseries{m}\fontsize{22}{26}\selectfont
+\textbf{\titulo}
+\hspace{10mm}
+
+\normalsize
+\vspace{0.5cm}
+\color{black}
+\flushright
+\textbf{\subtitulo}
+\hspace*{15mm}
+\end{minipage}
+
+\vspace{15mm}
+
+\begin{minipage}[t]{0.3\textwidth}
+\end{minipage}
+\hfill
+\begin{minipage}[t]{0.4\textwidth}
+\normalsize
+\begin{flushright}
+\descripcion
+\end{flushright}
+\end{minipage}
+\hspace*{10mm}
+
+\begin{minipage}[t]{0.3\textwidth}
+\end{minipage}
+\hfill
+\begin{minipage}[t]{0.6\textwidth}
+\footnotesize 
+\vspace{15mm}
+\begin{figure}[H]
+\foto
+\end{figure}
+\flushright
+\textbf{Curso 2021-2022}
+\hspace*{15mm}
+\bigskip
+\vspace{15mm} 
+\large
+\flushleft \textbf{Tarea realizada por:}
+\bigskip
+\normalsize
+\begin{tabular}{|p{8cm}}
+\arrayrulecolor{Prune}
+\autor
+\end{tabular}
+\end{minipage}
+\fontsize{11}{1.2}\selectfont
+\normalfont
+\restoregeometry
+\clearpage %% old habits die hard ;-)
+\newpage

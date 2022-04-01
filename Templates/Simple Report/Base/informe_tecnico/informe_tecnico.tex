@@ -1,0 +1,82 @@
+%%% Local Variables:
+%%% coding: utf-8
+%%% mode: latex
+%%% TeX-engine: xetex
+%%% TeX-command-extra-options: "-shell-escape"
+%%% END:
+\documentclass[a4paper,11pt,titlepage,openright,oneside]{scrbook}
+\KOMAoption{toc}{bib,chapterentryfill} % Opciones del índice
+\usepackage{scrhack} % Previene algunos errores
+
+\setkomafont{pagenumber}{} % Número de página (Sin nada añadido)
+
+% Añade al índice y numera hasta la profundidad 4.
+% 1:section,2:subsection,3:subsubsection,4:paragraph
+\setcounter{tocdepth}{4}
+\setcounter{secnumdepth}{4}
+
+% Muestra una regla para comprobar el formato de las páginas
+%\usepackage[type=upperleft,showframe,marklength=8mm]{fgruler}
+
+% MÁRGENES DE LAS PÁGINAS
+% \usepackage[
+%   inner	=	3.0cm, % Margen interior
+%   outer	=	2.5cm, % Margen exterior
+%   top	=	2.5cm, % Margen superior
+%   bottom=	2.5cm, % Margen inferior
+%   includeheadfoot, % Incluye cabecera y pie de página en los márgenes
+% ]{geometry}
+% Valor de interlineado
+\renewcommand{\baselinestretch}{1.0} % 1 línea de interlineado
+% Para poder generar páginas horizontales
+\usepackage{lscape}
+% Ancho de la zona para comentarios en el margen. (modificado para todonotes)
+\setlength{\marginparwidth}{2cm}
+
+\usepackage{listings}
+\usepackage[textsize=tiny,spanish,shadow,textwidth=2cm]{todonotes}
+
+
+\input{./config_files/packages}
+
+\begin{document}
+\titulo{TITULO DEL DOCUMENTO}
+\identificador{IDENTIFICADOR}
+\seguridad{NIVEL DE SEGURIDAD}
+\logo[scale=0.5]{example-image-b}
+\tipo{TIPO DE DOCUMENTO}
+\autor{Autores: \\ Jorge Benavides Macias \\ Jorge Benavides Macias \\ Jorge Benavides Macias \\ Jorge Benavides Macias \\ Jorge Benavides Macias}
+\tutor{}
+\fecha{BORRADOR}
+
+\setlength {\marginparwidth }{2cm}
+\input{./include/portada/portada.tex} % Portada Color
+\input{./include/portada/portada_bn.tex} % Portada Color
+
+% Incluye después del archivo anterior el indice y lista de figuras, tablas y códigos.
+\mainmatter
+\tableofcontents	% Índice
+\listoffigures		% Índice de figuras
+\listoftables		% Índice de tablas
+\lstlistoflistings	% Índice de códigos
+
+
+
+\chapter{Introduccion}
+\section{One}
+The figure \ref{nicefigure} is nice, but the missing figure \ref{OneOfMyMissingFigures} will be stunning. 
+\section{Two}
+Some text 
+
+\missingfigure{\Huge Nice this triangle?}
+
+Some more text
+
+\missingfigure{\Huge I need the image, now!}
+
+
+\section{Introducción}
+\section{Núcleo del informe}
+\section{Conclusiones}
+\section{Conclusiones}
+\end{document}

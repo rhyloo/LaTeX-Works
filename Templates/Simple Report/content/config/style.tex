@@ -1,0 +1,47 @@
+\pagestyle{fancy}
+\fancyhf{}
+\lhead{\subjectx}
+\rhead{\authorx}
+\rfoot{\thepage}
+\renewcommand{\headrulewidth}{0.4pt}% Default \headrulewidth is 0.4pt
+
+\setlength{\headheight}{26pt}
+\setlength{\parskip}{1em}
+% \setlength{\parindent}{0em}
+
+\definecolor{my_blue}{RGB}{0, 46, 93}
+\definecolor{my_white}{RGB}{255, 255, 255}
+\definecolor{Prune}{RGB}{0,46,93}
+\definecolor{matlab_background}{rgb}{0.99,0.99,0.86}
+
+
+\definecolor{mygreen}{RGB}{28,172,0} % color values Red, Green, Blue
+\definecolor{mylilas}{RGB}{170,55,241}
+
+\lstset{language=Matlab,%
+    basicstyle=\footnotesize\ttfamily,
+    %basicstyle=\color{red},
+    frame = single,
+    backgroundcolor=\color{matlab_background},
+    frameround=tttt,
+    rulecolor=\color{black},
+    showspaces=false,    
+    showstringspaces=false,
+    showtabs=true,                  
+    tabsize=4,
+    morekeywords={matlab2tikz},
+    keywordstyle=\bfseries\color{blue},%
+    morekeywords=[2]{1}, keywordstyle=[2]{\color{black}},
+    identifierstyle=\color{black},%
+    stringstyle=\color{mylilas},
+    commentstyle=\color{mygreen},%
+    showstringspaces=false,%without this there will be a symbol in the places where there is a space
+    numbers=left,%
+    numberstyle={\tiny \color{black}},% size of the numbers
+    numbersep=-10pt, % this defines how far the numbers are from the text
+    emph=[1]{for,end,break},emphstyle=[1]\bfseries\color{blue}, %some words to emphasise
+    emph=[2]{beta}, emphstyle=[2]{\color{black}},    
+    numbers=none,
+    breaklines=false,
+    float = h
+}

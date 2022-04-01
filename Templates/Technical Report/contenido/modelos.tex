@@ -1,0 +1,165 @@
+\newpage
+\section{Estudio de los modelos.}
+\label{Estudio de los modelos}
+\subsection{Gasolina}
+\input{contenido/modelos/motillo_peter}
+\input{contenido/modelos/burguer}
+\subsection{Eléctricos}
+\input{contenido/modelos/moto_l3e}
+%\input{contenido/modelos/bicis}
+\input{contenido/modelos/motos_patinetes}
+\subsection{Comparativa entre los modelos estudiados}
+A modo de resumen, la \autoref{tab:resumen_final}
+incluye el número de vehículos necesarios para cada una de las opciones estudiadas a lo largo de esta sección, junto con sus precios actuales en el mercado, que definirá en gran medida la inversión inicial. Asimismo, se recogen el número de vehículos que han de estar simultáneamente en carretera, lo cual delimita la cantidad de recurso humano que debe invertir la empresa dependiendo del modelo elegido.
+
+% Tabla
+\begin{table}[H]
+\centering
+\begin{tabular}{l|c|c|c|c|}
+\cline{2-5}
+ & \multicolumn{1}{l|}{Ciclomotor} & \multicolumn{1}{l|}{Motocicleta} & \multicolumn{1}{l|}{Patinete eléctrico} & \multicolumn{1}{l|}{Motocicleta eléctrica} \\ \hline
+\multicolumn{1}{|l|}{Coste  unitario vehículo (\glssymbol{euro})} & 1.999,00 & 2.149,00 & 376,62 & 2.685,00 \\ \hline
+\multicolumn{1}{|l|}{\begin{tabular}[c]{@{}l@{}}N º vehículos totales \\ necesarios caso 1\end{tabular}} & 5 & 5 & 20 & 9 \\ \hline
+\multicolumn{1}{|l|}{\begin{tabular}[c]{@{}l@{}}N º vehículos totales \\ necesarios caso 2\end{tabular}} & 5 & 5 & 16 & 7 \\ \hline
+\multicolumn{1}{|l|}{\begin{tabular}[c]{@{}l@{}}N º vehículos simultáneos \\ en carretera, caso 1\end{tabular}} & 5 & 5 & 8 & 5 \\ \hline
+\multicolumn{1}{|l|}{\begin{tabular}[c]{@{}l@{}}N º vehículos simultáneos\\  en carretera, caso 2\end{tabular}} & 5 & 5 & 7 & 5 \\ \hline
+\end{tabular}
+\caption{Resumen número de vehículo imprescindibles según cada modelos estudiados}
+\label{tab:resumen_final}
+\end{table}
+Una vez analizados diversos vehículos factibles para el reparto de comida a domicilio, se han realizado también la \autoref{fig:comparativa_caso_1} donde se comparan los costes económicos de las opciones estudiadas para el supuesto de que cada reparto incluya un único pedido y la \autoref{fig:comparativa_caso_2}, referente a la hipótesis de los pedidos dobles.
+
+\begin{figure}[h]
+    \centering
+    \includegraphics[scale = 0.4]{archivos/Comparativa_presupuestos_caso_1.jpeg}
+    \caption{Comparación de presupuestos de los vehículos para repartos individuales}
+    \label{fig:comparativa_caso_1}
+\end{figure}
+
+\begin{figure}[h]
+    \centering
+    \includegraphics[scale = 0.4]{archivos/Comparativa_presupuestos_caso_2.jpeg}
+    \caption{Comparación de presupuestos de los vehículos para repartos dobles}
+    \label{fig:comparativa_caso_2}
+\end{figure}
+
+Se observa que la \autoref{fig:comparativa_caso_1}, las motocicletas eléctricas, destacan como vehículo más caro, aunque ciertamente, la recta que define sus presupuestos tiende a aplanarse y abaratarse en un periodo de tiempo mayor. No obstante, si se observa la \autoref{fig:comparativa_caso_2}, apenas hay diferencia de precio entre la motocicleta eléctrica y las de gasolina.
+
+
+
+Económicamente, la opción más rentable son los patinetes eléctricos en ambas figuras y la peor opción es la motocicleta de gasolina, seguida de la motocicleta eléctrica. No obstante, partiendo de la premisa inicial de cubrir un radio de 6 \glssymbol{km} desde el establecimiento que impone la empresa \textit{DELICIOUS BURGER S.A.}; es evidente que el uso de patines eléctricos para entregar pedidos a 5 o 6 km de distancia no es lo ideal, además de tener que atravesar un tramo de autovía (prohibido por ley para este tipo de vehículos), el cliente recibiría su pedido con retardo y frío. Por consiguiente, se ha decidido indagar una alternativa a usar un único vehículo.
+
+\subsection{Opción óptima}
+\subsubsection{Justificación de la elección}
+
+En el \refanexo{anexo_scooter_electrico} y en el \refanexo{anexo_patienete eléctrico} se ha debatido la mejor opción dentro de la gama de motocicletas eléctricas y patinetes eléctricos, respectivamente. En consecuencia, se plantea una alternativa eficiente y coherente que cohesiona a la perfección la autonomía que proporciona el modelo de motocicleta Askoll eS1, con el precio competitivo de los patinetes Infiniton CITYJam Pro, cuyas características se encuentran detalladas en la
+\autoref{apartado_moto_electrica} y en la \autoref{apartado_patinetes} de esta \autoref{Estudio de los modelos}.
+
+
+Tomando en consideración que el reparto de los pedidos es homogéneo en todas las franjas horarias, el radio de alcance máximo es de 6 \glssymbol{km} que aparece en el \hyperref[plano:radio]{\hyperlink{plano:radio}{Plano 3}} del \refanexo{anexo_planos}, y la longitud de los pedidos contando ida y vuelta de media oscila entre los 5 y los 7,5 \glssymbol{km}; se puede suponer que la longitud de los recorridos también posee cierta uniformidad. Por ello, se estima que el número de pedidos que se han de repartir en un radio de 4 a 6 \glssymbol{km} desde el establecimiento, supondrá a lo sumo un 33 \% de los mismos.
+
+La solución que se plantea es que las motocicletas eléctricas cubran ese porcentaje de pedidos lejanos en todos y cada uno de los tramos horarios estudiados, mientras que los pedidos de corto alcance se realicen en patinetes. De este modo, se elimina el problema que presentan los patinetes al no poder alcanzar todas las áreas donde se debían realizar las entregas, al mismo tiempo que se mejora el tiempo de entrega en pedidos cortos porque los patinetes no necesitan ser estacionados, pueden acompañar a su conductor hasta la misma puerta del cliente.
+
+\subsubsection{Estudio del reparto}
+Una motocicleta eléctrica del modelo Askoll eS1 es capaz de realizar unos 100 \glssymbol{km} a carga completa, lo que equivale a 20 pedidos, suponiendo que los repartos tienen una duración media de 5 \glssymbol{km}, o 13 pedidos si se suponen 7,5 \glssymbol{km}. Realizando los mismos cálculos que en el \autoref{anexo_calculos_sobre_vehiculos}, pero reduciendo el número de pedidos a realizar en cada tramo horario, se obtiene que son necesarias aparentemente unos 18 patinetes para la primera hipótesis contemplada (repartos individuales de 5 km) y 16 patinetes para el caso de realizar repartos dobles de 7,5 \glssymbol{km} de ida y vuelta, según la \autoref{tab: analisis_detallado_patinete_5km_22} y la \autoref{tab: analisis_detallado_patinete_7,5km_22}.
+
+\begin{table}[H]
+\centering
+\begin{tabular}{l|c|c|c|c|}
+\cline{2-5}
+ & \begin{tabular}[c]{@{}c@{}}TRAMO \\ HORARIO 1\end{tabular} & \begin{tabular}[c]{@{}c@{}}TRAMO \\ HORARIO 2\end{tabular} & \begin{tabular}[c]{@{}c@{}}TRAMO \\ HORARIO 3\end{tabular} & \begin{tabular}[c]{@{}c@{}}TRAMO \\ HORARIO 4\end{tabular} \\ \cline{2-5} 
+ & \begin{tabular}[c]{@{}c@{}}Lunes-Jueves \\ (9:00-20:00)\end{tabular} & \begin{tabular}[c]{@{}c@{}}Lunes-Jueves \\ (20:00-0:00)\end{tabular} & \begin{tabular}[c]{@{}c@{}}Viernes-Domingo \\ (9:00-20:00)\end{tabular} & \begin{tabular}[c]{@{}c@{}}Viernes-Domingo \\ (20:00-1:00)\end{tabular} \\ \hline
+\multicolumn{1}{|l|}{Nº pedidos} & 30 & 40 & 44 & 90 \\ \hline
+\multicolumn{1}{|l|}{\begin{tabular}[c]{@{}l@{}}Distancia total a \\ recorrer \glssymbol{km}\end{tabular}} & 150 & 200 & 220 & 450 \\ \hline
+\multicolumn{1}{|l|}{\begin{tabular}[c]{@{}l@{}}Tiempo total de \\ reparto \glssymbol{minuto} \end{tabular}} & 660 & 240 & 660 & 300 \\ \hline
+\multicolumn{1}{|l|}{\begin{tabular}[c]{@{}l@{}}Tiempo estimado \\ por pedido (\glssymbol{minuto}/pedido)\end{tabular}} & 20 & 20 & 20 & 20 \\ \hline
+\multicolumn{1}{|l|}{\begin{tabular}[c]{@{}l@{}}Nº pedidos realizables \\ por vehículo\end{tabular}} & 33 & 12 & 33 & 15 \\ \hline
+\multicolumn{1}{|l|}{\begin{tabular}[c]{@{}l@{}}Nº vehículos simultáneos \\ necesarios\end{tabular}} & 1 & 4 & 2 & 6 \\ \hline
+\multicolumn{1}{|l|}{Nº de turnos de vehículos} & 4 & 8 & 3 & 2 \\ \hline
+\multicolumn{1}{|l|}{\begin{tabular}[c]{@{}l@{}}Nº vehículos totales \\ necesarios\end{tabular}} & 4 & 8 & 6 & 12 \\ \hline
+\end{tabular}
+\caption{Análisis detallado del reparto en patinete con viajes de 5 \glssymbol{km}.}
+\label{tab: analisis_detallado_patinete_5km_22}
+\end{table}
+
+
+
+\begin{table}[H]
+\centering
+\begin{tabular}{l|c|c|c|c|}
+\cline{2-5}
+ & \begin{tabular}[c]{@{}c@{}}TRAMO \\ HORARIO 1\end{tabular} & \begin{tabular}[c]{@{}c@{}}TRAMO \\ HORARIO 2\end{tabular} & \begin{tabular}[c]{@{}c@{}}TRAMO \\ HORARIO 3\end{tabular} & \begin{tabular}[c]{@{}c@{}}TRAMO \\ HORARIO 4\end{tabular} \\ \cline{2-5} 
+ & \begin{tabular}[c]{@{}c@{}}Lunes-Jueves \\ (9:00-20:00)\end{tabular} & \begin{tabular}[c]{@{}c@{}}Lunes-Jueves \\ (20:00-0:00)\end{tabular} & \begin{tabular}[c]{@{}c@{}}Viernes-Domingo \\ (9:00-20:00)\end{tabular} & \begin{tabular}[c]{@{}c@{}}Viernes-Domingo \\ (20:00-1:00)\end{tabular} \\ \hline
+\multicolumn{1}{|l|}{Nº pedidos dobles} & 7 & 12 & 17 & 47 \\ \hline
+\multicolumn{1}{|l|}{\begin{tabular}[c]{@{}l@{}}Distancia total a \\ recorrer (\glssymbol{km})\end{tabular}} & 52,5 & 90 & 127,5 & 352,5 \\ \hline
+\multicolumn{1}{|l|}{\begin{tabular}[c]{@{}l@{}}Tiempo total de \\ reparto doble (\glssymbol{minuto})\end{tabular}} & 660 & 240 & 660 & 300 \\ \hline
+\multicolumn{1}{|l|}{\begin{tabular}[c]{@{}l@{}}Tiempo estimado por \\ pedido doble (\glssymbol{minuto}/pedido)\end{tabular}} & 32,5 & 32,5 & 32,5 & 32,5 \\ \hline
+\multicolumn{1}{|l|}{\begin{tabular}[c]{@{}l@{}}Nº pedidos dobles \\ realizables por vehículo\end{tabular}} & 20 & 7 & 20 & 9 \\ \hline
+\multicolumn{1}{|l|}{\begin{tabular}[c]{@{}l@{}}Nº vehículos simultáneos \\ necesarios\end{tabular}} & 1 & 2 & 1 & 6 \\ \hline
+\multicolumn{1}{|l|}{Nº de turnos de vehículos} & 2 & 2 & 4 & 2 \\ \hline
+\multicolumn{1}{|l|}{\begin{tabular}[c]{@{}l@{}}Nº vehículos totales \\ necesarios\end{tabular}} & 2 & 4 & 4 & 12 \\ \hline
+\end{tabular}
+\caption{Análisis detallado del reparto en patinete con viajes de 7,5 \glssymbol{km}.}
+\label{tab: analisis_detallado_patinete_7,5km_22}
+\end{table}
+
+Seguidamente, se analizan mediante gráficas el número de patinetes necesarios para las franjas horarias donde se produce el \gls{cuello de botella}, es decir, los fines de semana. Todo esto dependerá sustancialmente del tiempo que dura la recarga de los patinetes.
+
+En la \autoref{fig:patinetes_caso1_2} aparecen representados en azul los 3 turnos de 2 patinetes vehículos cada uno, así como los 2 turnos de 6 patinetes por la tarde (color verde). Según el tiempo de recarga de las baterías, los dos patinetes del primer turno de la mañana se pueden emplear en el segundo turno de vehículos de la tarde. En consecuencia, para el primer caso estudiado solo son necesarios 16 patinetes en total.
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width= \textwidth, height=12em]{archivos/caso2_patinetes.pdf}
+    \caption{Representación turnos minorados de patinetes en viajes de 5 \glssymbol{km}.}
+    \label{fig:patinetes_caso1_2}
+\end{figure}
+
+Igualmente, en la \autoref{fig:patinetes_caso2_2} se observa que 2 de los patinetes del turno de mañana se pueden recargar y utilizar en el horario posterior, por lo que para esa hipótesis solo son necesarios 14 patinetes.
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width= \textwidth, height=12em]{archivos/caso1_patinetes.pdf}
+    \caption{Representación turnos minorados de patinetes en viajes de 7,5 \glssymbol{km}.}
+    \label{fig:patinetes_caso2_2}
+\end{figure}
+
+\subsubsection{Presupuestos}
+Finalmente, para hallar el presupuesto de esta opción híbrida se deben tener en cuenta diversos factores. 
+
+Como se ha mencionado anteriormente, se supone  que las motocicletas cubren el 33\% de los repartos, por ello los días entre semana se empleará una motocicleta para todo el día, mientras que en los fines de semana se usará una motocicleta en el turno de mañana y en el turno de tarde se ha de emplear la motocicleta del turno anterior además de otra a plena carga.
+
+Respecto a los cálculos se ha de sumar el número de patinetes y sus costes asociados, así como los dos patinetes y sus respectivos costes, todo queda recogido en la \autoref{tab: analisis_presupuestos_patinetes_y_motos}. En estos cálculos se han empleado datos de la \autoref{tabla:tabla_datos_comunes}, de la \autoref{tab: analisis_presupuestos_patienetes} y de la \autoref{tab:Estudio presupuestos modelo Askoll eS1} debido a que estos modelos ya se han analizado en detalle en el \autoref{anexo_calculos_sobre_vehiculos}.
+
+\begin{table}[H]
+\centering
+\begin{tabular}{|l|c|}
+\hline
+Nº patinetes necesarios caso 1 & 16 \\ \hline
+Nº patinetes necesarios caso 2 & 14 \\ \hline
+Nº motocicletas necesarias en ambos casos & 2 \\ \hline
+Nº recargas semanales patinetes caso 1 & 102 \\ \hline
+Nº recargas semanales patinetes caso 2 & 72 \\ \hline
+Nº recargas semanales motocicletas caso 1 & 10 \\ \hline
+Nº recargas semanales motocicletas caso 2 & 10 \\ \hline
+Presupuesto anual en recargas caso 1 (\glssymbol{euro}) & 330,01 \\ \hline
+Presupuesto anual en recargas caso 2 (\glssymbol{euro}) & 268,90 \\ \hline
+Presupuesto para vehículos primer año caso 1 (\glssymbol{euro}) & 16.536,67 \\ \hline
+Presupuesto para vehículos primer año   caso 2 (\glssymbol{euro}) & 15.362,72 \\ \hline
+Presupuesto para vehículos anual  caso 1 (\glssymbol{euro}) & 4.205,91 \\ \hline
+Presupuesto para vehículos anual caso 2 (\glssymbol{euro}) & 3.785,20 \\ \hline
+Presupuesto en vehículos a 10 años, caso 1 (\glssymbol{euro}) & 54.389,9 \\ \hline
+Presupuesto en vehículos a 10 años, caso 2 (\glssymbol{euro}) & 49.429,53 \\ \hline
+\end{tabular}
+\caption{Análisis de los presupuestos opción óptima.}
+\label{tab: analisis_presupuestos_patinetes_y_motos}
+\end{table}
+
+
+% 3.4.4. Ventajas y desventajas
+Las ventajas que proporciona este modelo híbrido de reparto usando 2 vehículos 100\% son diversas. Cabe destacar que los patinetes eléctricos en repartos de corto alcance agilizan la entrega de pedidos y minimizan el riesgo de robos de vehículos fuera del local porque pueden acompañar en todo momento al conductor. Además, económicamente este vehículo es el más barato.
+
+Del mismo modo, las motocicletas eléctricas proporcionan gran independencia, los repartos de larga distancia quedan cubiertos en el tiempos estimado sin restricciones de circulación. Al contrario de lo que ocurre con los patinetes, las motocicletas pueden realizar recorridos más largos y atravesar tramos de carretera, como el necesario para alcanzar el área próxima a Churriana
+
+Respecto a las desventajas, solo hay que incidir en el hecho de que al usar motocicletas eléctricas, el presupuesto se eleva y al usar patinetes eléctricos, se requieren más empleados como repartidores que usando otro tipo de vehículos.
+
+De acuerdo con lo expuesto en este subapartado, junto con la buena imagen que aportan los vehículos eléctricos frente a los de gasolina a la empresa, el uso de vehículos 100\% eléctricos como son el modelo Askoll eS1 y el Infiniton CITYJam Pro es la opción más apropiada.

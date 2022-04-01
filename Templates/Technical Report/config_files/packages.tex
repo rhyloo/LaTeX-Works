@@ -1,0 +1,355 @@
+\makeatletter
+\def\identificador#1{\def\@identificador{#1}}
+\def\identificadorx{\@identificador}% Display title
+
+\def\seguridad#1{\def\@seguridad{#1}}
+\def\seguridadx{\@seguridad}% Display title
+
+\def\titulo#1{\def\@titulo{#1}}
+\def\titulox{\@titulo}% Display title
+
+\def\subtitulo#1{\def\@subtitulo{#1}}
+\def\subtitulox{\@subtitulo}% Display title
+
+\def\tipo#1{\def\@tipo{#1}}
+\def\tipox{\@tipo}% Display title
+
+\def\organizacion#1{\def\@organizacion{#1}}
+\def\organizacionx{\@organizacion}% Display title
+
+% \def\organizacion#1{\def\@organizacion{#1}}
+% \def\organizacionx{\@organizacion}% Display title
+
+\def\asociacion#1{\def\@asociacion{#1}}
+\def\asociacionx{\@asociacion}% Display title
+
+\newcommand*{\logo}[2][scale=0.5]{%
+  \gdef\@logo@params{#1}%
+  \gdef\@logo{#2}%
+}
+\newcommand*{\@logo@params}{}
+\newcommand*{\@logo}{}
+\def\logox{\expandafter\includegraphics\expandafter[\@logo@params]{\@logo}}
+
+\def\autor#1{\def\@autor{#1}}
+\def\autorx{\@autor}% Display title
+
+\def\tutor#1{\def\@tutor{#1}}
+\def\tutorx{\@tutor}% Display title
+
+\def\fecha#1{\def\@fecha{#1}}
+\def\fechax{\@fecha}% Display title
+
+ \makeatother
+
+\setlength{\parskip}{1em}
+
+\makeatletter
+    \renewcommand\paragraph{%
+        \@startsection{paragraph}{4}{0mm}%
+           {-\baselineskip}%
+           {.5\baselineskip}%
+           {\normalfont\normalsize\bfseries}}
+    \makeatother
+
+%  \usepackage[utf8]{inputenc}
+ %%%%%%%%%%%%%%%%%%%%%%%%
+% DOCUMENTO EN ESPAÑOL
+%%%%%%%%%%%%%%%%%%%%%%%%
+\usepackage{siunitx}
+\usepackage{makecell}
+\usepackage{tabularx,ragged2e}
+\newcolumntype{C}{>{\Centering\arraybackslash}X} % centered "X" column
+\usepackage{multirow}
+\usepackage[table,xcdraw]{xcolor}
+% \usepackage[titletoc,title,toc,page]{appendix}
+\usepackage[titletoc,title]{appendix}
+% \appto\appendix{\addtocontents{toc}{\protect\setcounter{tocdepth}{4}}}
+\renewcommand\appendixtocname{Anexos}
+\usepackage[spanish]{babel}
+% \usepackage{polyglossia}
+\usepackage{chngcntr}
+\usepackage[pagecolor=none]{pagecolor}
+
+\addto\captionsspanish{%
+    % \renewcommand\appendixtocname{Anexos}
+    % \renewcommand{\appendixname}{Anexo}
+    % \renewcommand{\appendixpagename}{Anexos}
+    \renewcommand{\appendixname}{Anexo}
+    \renewcommand{\tablename}{Tabla}
+	\renewcommand{\listtablename}{Índice de tablas} 
+	\renewcommand{\lstlistingname}{Código}
+	\renewcommand{\lstlistlistingname}{Índice de \lstlistingname s}
+	\renewcommand{\glossaryname}{Glosario}
+	\renewcommand{\acronymname}{Acrónimos}
+	\renewcommand{\bibname}{Bibliografía}%
+}
+\addto\extrasspanish{%
+  \renewcommand*{\appendixautorefname}{Anexo}%
+}
+
+
+% \addto\extrasspanish{%
+% %   \def\figurename{Figura}%
+% }
+\usepackage[hyphens]{url} 
+\def\UrlBreaks{\do\/\do-}
+ \usepackage{hyperref}
+ \hypersetup{
+    hidelinks,
+    breaklinks,
+    colorlinks=false,
+    linkcolor=blue,
+    pdftitle={IT-PI-04},
+    pdfpagemode=FullScreen,
+    }
+ \usepackage{pdfpages}
+ \newcounter{pdfpage}
+%%%%%%%%%%%%%%%%%%%%%%%% 
+% GLOSARIOS
+%%%%%%%%%%%%%%%%%%%%%%%%
+\usepackage[acronym,nonumberlist]{glossaries}
+\usepackage{glossary-superragged}
+\newglossarystyle{modsuper}{%
+  \setglossarystyle{super}%
+  \renewcommand{\glsgroupskip}{}
+}
+\renewcommand{\glsnamefont}[1]{\textbf{#1}}
+\usepackage{everyshi}
+\usepackage{multirow}
+\usepackage{scrlayer-scrpage}
+\setkomafont{pageheadfoot}{} % define font style for page head foot
+\clearpairofpagestyles % remove the defaults
+% \cfoot{- \pagemark \ -} % put the page number in the outer footer
+\usepackage{titletoc}
+\usepackage{lastpage}
+\ihead{\seguridadx}
+\ohead{\identificadorx}
+\newcounter{apppage}
+\cfoot{- \thepage /\pageref{lastpage} -}
+
+\usepackage{lipsum}
+\usepackage{soul}
+\usepackage[official]{eurosym}
+\usepackage[shortlabels]{enumitem}
+\usepackage{float}
+\usepackage{scrhack} % Previene algunos errores
+
+\usepackage{lscape}
+% Ancho de la zona para comentarios en el margen. (modificado para todonotes)
+
+\usepackage{listings}
+\usepackage[textsize=tiny,spanish,shadow,textwidth=2cm]{todonotes}
+
+
+
+
+% Paquetes
+\usepackage[
+  inner	=	3.0cm, % Margen interior
+  outer	=	2.5cm, % Margen exterior
+  top	=	2.5cm, % Margen superior
+  bottom=	2.5cm, % Margen inferior
+  includeheadfoot, % Incluye cabecera y pie de página en los márgenes
+]{geometry}
+\newgeometry{ignoreall,top=2cm,outer=2cm,inner=2cm}
+\thispagestyle{empty}
+\usepackage{graphicx}
+\usepackage{calc}
+\usepackage{xstring}
+\usepackage{setspace}
+\usepackage{ifthen}
+\usepackage{tikz}
+\usetikzlibrary{calc}
+\usetikzlibrary{positioning}
+\usetikzlibrary{fit}
+\usetikzlibrary{shapes}
+\usetikzlibrary{arrows}
+\usepackage{eso-pic}
+%\usepackage{cite}
+\usepackage{breakcites}
+%%%%%%%%%%%%%%%%%%%%%%%%
+% TEXTO
+%%%%%%%%%%%%%%%%%%%%%%%%
+\usepackage{fontspec}
+% Paquete para poder modificar las fuente de texto
+\usepackage{xltxtra}
+% Cualquier tamaño de texto. Uso: {\fontsize{100pt}{120pt}\selectfont tutexto}
+\usepackage{anyfontsize}
+% Para modificar parametros del texto.
+\usepackage{setspace}
+% Paquete para posicionar bloques de texto
+\usepackage{textpos}
+% Paquete para realizar cajas de texto.
+% Uso: \begin{mdframed}[linecolor=red!100!black] tutexto \end{mdframed}
+\usepackage{framed,mdframed}
+% Para subrayar. Uso: \hlc[tucolor]{tutexto}
+\newcommand{\hlc}[2][yellow]{ {\sethlcolor{#1} \hl{#2}} }
+\newfontfamily\FuenteTitulo{HelveticaLTStd-Cond}[Path=./include/fuentes/]
+% Helvetica. Uso: {\FuentePortada tutexto}
+\newfontfamily\FuentePortada{Helvetica}[Path=./include/fuentes/]
+
+
+\StrLen{\@titulox}[\longitudtitulo] % Cuenta los caracteres título
+\definecolor{fondo}{RGB}{32,2,116}
+\newcommand{\colorfondo}{white}
+
+
+
+% Tamaño por defecto de la fuente de texto para:
+\def\FuenteTamano{55pt}	% Tamaño para el título del trabajo
+\def\interlinportada{5.0} % Interlineado por defecto para el título
+\def\TamTrabajo{20pt} 	% Tamaño para el tipo de trabajo (grado o máster)
+\def\TamTrabajoIn{20pt} 	% Tamaño para el salto de línea después de tipo de trabajo
+\def\TamOtros{15pt} 	% Tamaño para datos personales y fecha
+\def\TamOtrosIn{1pt} 	% Tamaño para los saltos de línea en la info personal
+
+
+% Comprueba la longitud del título y según sea este determina unos valores nuevos
+\ifthenelse{\longitudtitulo > 180}{
+\def\FuenteTamano{35pt}		% Si es mayor a 180 caracteres tamaño de fuente 35pt
+\def\interlinportada{3.5}} 	% Establece nuevo interlineado
+{\ifthenelse{\longitudtitulo > 140}{
+\def\FuenteTamano{40pt}		% Si es mayor a 140 caracteres tamaño de fuente 40pt
+\def\interlinportada{4.0}} 	% Establece nuevo interlineado
+{\ifthenelse{\longitudtitulo > 120}{
+\def\FuenteTamano{50pt}		% Si es mayor a 120 caracteres tamaño de fuente 50pt
+\def\interlinportada{4.5}} 	% Establece nuevo interlineado
+{} % Si no, no modifica el tamaño
+} }
+
+\renewcommand{\appendixpagename}{\topskip0pt
+\vspace*{\fill}
+\centering
+Anexos
+\label{Anexos}
+\vspace*{\fill}}
+
+
+\def\sectionautorefname{Section}
+\def\subsectionautorefname{Section}
+\def\appendixautorefname{Appendix}
+
+% begin appendix autoref patch [\autoref subsections in appendix](https://tex.stackexchange.com/questions/149807/autoref-subsections-in-appendix)
+\usepackage{etoolbox}
+\pretocmd\section{\cleardoublepage}{}%
+  {\errmessage{Patching \noexpand\section failed}}
+  
+\makeatletter
+\patchcmd{\hyper@makecurrent}{%
+    \ifx\Hy@param\Hy@chapterstring
+        \let\Hy@param\Hy@chapapp
+    \fi
+}{%
+    \iftoggle{inappendix}{%true-branch
+        % list the names of all sectioning counters here
+        \@checkappendixparam{chapter}%
+        \@checkappendixparam{section}%
+        \@checkappendixparam{subsection}%
+        \@checkappendixparam{subsubsection}%
+        \@checkappendixparam{paragraph}%
+        \@checkappendixparam{subparagraph}%
+    }{}%
+}{}{\errmessage{failed to patch}}
+
+\newcommand*{\@checkappendixparam}[1]{%
+    \def\@checkappendixparamtmp{#1}%
+    \ifx\Hy@param\@checkappendixparamtmp
+        \let\Hy@param\Hy@appendixstring
+    \fi
+}
+\makeatletter
+
+\newtoggle{inappendix}
+\togglefalse{inappendix}
+
+\apptocmd{\appendix}{\toggletrue{inappendix}}{}{\errmessage{failed to patch}}
+\apptocmd{\subappendices}{\toggletrue{inappendix}}{}{\errmessage{failed to patch}}
+% end appendix autoref patch
+
+\newcommand{\refanexo}[1]{\hyperref[#1]{Anexo~\ref{#1}}}
+%\refanexo{anexo_xxx}
+%https://github.com/abntex/abntex2/issues/76
+
+\usepackage[titles]{tocloft}
+
+% \appto\appendix{%
+%   \setcounter{secnumdepth}{3}
+%   \addtocontents{toc}{%
+%     \unexpanded{\unexpanded{%
+%       \cftpagenumbersoff{subsection}%
+%       \cftpagenumbersoff{section}%
+%     %   \setlength\cftsecindent{\cftsecnumwidth}%
+%     }}%
+%   }%
+% }
+
+\setlength{\glsdescwidth}{15cm}
+\setlength{\headheight}{2em}
+% \setlength{\parindent}{0em}
+\setlength{\footheight}{4em}
+\renewcommand{\baselinestretch}{1.1}
+
+\newglossary[slg]{symbolslist}{syi}{syg}{Symbolslist} % create add. symbolslist
+
+
+\glsaddkey{unit}{\glsentrytext{\glslabel}}{\glsentryunit}{\GLsentryunit}{\glsunit}{\Glsunit}{\GLSunit}
+
+
+
+\newglossarystyle{symbunitlong}{%
+\setglossarystyle{long3col}% base this style on the list style
+\renewenvironment{theglossary}{% Change the table type --> 3 columns
+  \begin{longtable}{lp{0.6\glsdescwidth}>{\centering\arraybackslash}p{2cm}}}%
+  {\end{longtable}}%
+%
+\renewcommand*{\glossaryheader}{%  Change the table header
+  \bfseries Símbolo & \bfseries Descripción\\
+  \hline
+  \endhead}
+\renewcommand*{\glossentry}[2]{%  Change the displayed items
+% Description
+\glsunit{##1} & \glossentrydesc{##1}  \tabularnewline
+}
+}
+
+\usepackage[sorting=none,citestyle=numeric-comp,defernumbers=true,backend=biber]{biblatex}
+
+\usepackage{csquotes}
+\addbibresource{bibliografia.bib}
+
+% % Count total number of entries in each refsection
+% \AtDataInput{%
+%   \csnumgdef{entrycount:\therefsection}{%
+%     \csuse{entrycount:\therefsection}+1}}
+
+% % Print the labelnumber as the total number of entries in the
+% % current refsection, minus the actual labelnumber, plus one
+% \DeclareFieldFormat{labelnumber}{\mkbibdesc{#1}}
+% \newrobustcmd*{\mkbibdesc}[1]{%
+%   \number\numexpr\csuse{entrycount:\therefsection}+1-#1\relax}
+
+% \DeclareFieldFormat{labelnumberwidth}{#1.}
+
+\newcounter{bibIndex}
+
+\makeatletter
+\newcommand{\changeBibPrefix}[1]{%
+  \def\@bibitem##1{%
+    \@skiphyperreftrue\H@item\@skiphyperreffalse
+    \Hy@raisedlink{%
+      \hyper@anchorstart{cite.##1\@extra@b@citeb}\relax\hyper@anchorend
+    }%
+    \if@filesw
+    \begingroup
+      \let\protect\noexpand
+      \immediate\write\@auxout{%
+        \string\bibcite{##1}{#1\the\value{\@listctr}}%
+      }%
+    \endgroup
+    \fi
+    \ignorespaces
+  }
+  \def\@biblabel##1{[#1##1]}
+}
+\makeatother

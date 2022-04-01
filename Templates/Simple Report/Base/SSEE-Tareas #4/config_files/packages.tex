@@ -1,0 +1,62 @@
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage[spanish]{babel}
+\usepackage{amsmath}
+\usepackage{amsfonts}
+\usepackage{fancyhdr}
+\usepackage{amssymb}
+\usepackage[font=scriptsize,labelfont=bf]{caption}
+\usepackage{lmodern}
+\usepackage{xcolor} 
+\usepackage{mdframed}
+\usepackage{wrapfig}
+\usepackage{multirow} 
+\usepackage{lipsum}
+\usepackage{multicol} 
+\usepackage{scrextend} 
+\usepackage{tikz}
+\usetikzlibrary{positioning}
+\usepackage{float}
+\usepackage{graphicx}
+\usepackage{minted}
+\usepackage{tikzpagenodes}
+\usepackage[absolute]{textpos} 
+\usepackage{colortbl}
+\usepackage{array}
+\usepackage[hidelinks]{hyperref}
+\usepackage[makeroom]{cancel}
+\usepackage{eso-pic}
+\usepackage[a4paper,left=3cm,right=2cm,top=2.5cm,bottom=2.5cm]{geometry}
+\usepackage[final]{pdfpages}
+\usepackage{float}
+\usepackage{fancyhdr}
+\pagestyle{fancy}
+\fancyhf{}
+\lhead{Sistemas electrónicos}
+\rhead{Jorge Benavides Macías}
+\rfoot{\thepage}
+\renewcommand{\headrulewidth}{0.4pt}% Default \headrulewidth is 0.4pt
+\setlength{\headheight}{16pt}
+\setlength{\parskip}{1em}
+\setlength{\parindent}{0em}
+\definecolor{my_blue}{RGB}{0, 46, 93}
+\definecolor{my_white}{RGB}{255, 255, 255}
+\definecolor{Prune}{RGB}{0,46,93}
+
+\newcommand*{\dummypic}[4]{%
+\setlength{\fboxsep}{0pt}%
+\begin{minipage}[t][0.2\textwidth][c]{0.25\textwidth}
+\centering \includegraphics[#1]{#2}
+\caption{#3}
+\label{#4}
+\end{minipage}%
+}
+
+\usemintedstyle{borland}
+
+%New colors defined below
+\definecolor{LightGray}{gray}{0.9}
+\definecolor{codegreen}{rgb}{0,0.6,0}
+\definecolor{codegray}{rgb}{0.5,0.5,0.5}
+\definecolor{codepurple}{rgb}{0.58,0,0.82}
+\definecolor{backcolour}{rgb}{0.95,0.95,0.92}

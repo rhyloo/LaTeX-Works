@@ -1,0 +1,167 @@
+\makeatletter
+
+%% Define the var grade
+\def\grade#1{\def\@grade{#1}}
+\def\gradex{\@grade}
+
+%% Define the var subject
+\def\subject#1{\def\@subject{#1}}
+\def\subjectx{\@subject}
+
+%% Define the var activity
+\def\activity#1{\def\@activity{#1}}
+\def\activityx{\@activity}
+
+%% Define the var number of description
+\def\description#1{\def\@description{#1}}
+\def\descriptionx{\@description}
+
+%% Define the var title
+\def\title#1{\def\@title{#1}}
+\def\titlex{\@title}
+
+%% Define the var subtitle
+\def\subtitle#1{\def\@subtitle{#1}}
+\def\subtitlex{\@subtitle}
+
+%% Define the var image
+% Structure: \image[scale=0.5]{example-image-a}
+\newcommand*{\image}[2][scale=0.5]{%
+  \gdef\@image@params{#1}%
+  \gdef\@image{#2}%
+}
+\newcommand*{\@image@params}{}
+\newcommand*{\@image}{}
+\def\imagex{\expandafter\includegraphics\expandafter[\@image@params]{\@image}}
+
+%% Define the var author
+\def\author#1{\def\@author{#1}}
+\def\authorx{\@author}
+
+%% Define the var date
+\def\date#1{\def\@date{#1}}
+\def\datex{\@date}
+\makeatother
+
+\newtcolorbox[auto counter]{codeblock}[2][]{%
+colback=matlab_background,colframe=my_blue,
+title=Código~\thetcbcounter. #2,#1}
+
+
+% \newcommand*{\dummypic}[4]{%
+% \setlength{\fboxsep}{0pt}%
+% \begin{minipage}[t][0.2\textwidth][c]{0.25\textwidth}
+% \centering \includegraphics[#1]{#2}
+% \caption{#3}
+% \label{#4}
+% \end{minipage}%
+% }
+
+
+\newcommand*{\portada}[0]{
+\fontfamily{fvs}\fontseries{m}\fontsize{22}{1.2}\selectfont
+\newgeometry{top=0cm, bottom=0cm, right=0cm, left=0cm}
+\AddToShipoutPictureBG*{%
+ \AtPageLowerLeft{%
+\fontfamily{fvs}\fontseries{m}\fontsize{22}{1.2}\selectfont
+\begin{tikzpicture}
+    \clip (0,0) rectangle (\paperwidth,\paperheight);
+    \fill[color = my_blue] (0,0) rectangle (120.664pt,\paperheight);
+    \fill[my_white] (0.50,0.2) rectangle (0.63, 29.5);
+    \fill[my_white] (0.75,0.2) rectangle (0.88, 29.5);
+    \fill[my_white] (1.20,0.2) rectangle (1.33, 29.5);
+    \fill[my_white] (1.70,0.2) rectangle (1.83, 29.5) node (first){};
+    \color{white}
+    \node [right=of first, yshift=-0.75\paperheight] (subject) {\hspace*{-35pt}\rotatebox{90}{\textbf{\subjectx{}}}};
+    \fontsize{14}{26}
+    \color{white}
+    \node [right=of first, yshift=-0.85\paperheight]{\hspace*{3pt}\rotatebox{90}{\activityx{}}};
+
+  \end{tikzpicture}}}
+
+\vspace*{20pt}
+
+\begin{minipage}[t]{0.2017\paperwidth}
+\end{minipage}
+\hfill
+\begin{minipage}[c]{0.7983\paperwidth}
+\begin{center}
+\includegraphics[scale=0.41]{config/images/logo.pdf}
+\end{center}
+\end{minipage}
+
+
+\begin{minipage}[t]{0.2017\paperwidth}
+\end{minipage}
+\hfill
+\begin{minipage}[t]{0.7983\paperwidth}
+    \vspace{10mm} 
+    \color{Prune}
+    \fontfamily{fvs}\fontseries{m}\fontsize{22}{26}\selectfont
+    \centering
+    \gradex\par
+    \vspace{30pt}
+    \textbf{\titlex}\par
+    \normalsize
+    % \vspace{20pt}
+    \color{black}
+    \large
+    \textbf{\subtitlex}
+\end{minipage}
+
+% \vspace{20pt}
+
+\begin{minipage}[t]{0.2017\paperwidth}
+\end{minipage}
+\hfill
+\begin{minipage}[t]{0.7983\paperwidth}
+    \large
+    \centering
+    \descriptionx
+\end{minipage}
+
+% \vspace*{-20pt}
+
+\begin{minipage}[t]{0.2017\paperwidth}
+\end{minipage}
+\hfill
+\begin{minipage}[t]{0.7983\paperwidth}
+    \centering
+    \footnotesize
+    \vspace{15mm}
+    \begin{figure}[H]
+    \centering
+    \fbox{\imagex}
+    \end{figure}
+\end{minipage}
+
+\vspace*{40pt}
+\begin{minipage}[t]{0.3\paperwidth}
+\end{minipage}
+\hfill
+\begin{minipage}[t]{0.6\paperwidth}
+    \large
+    \flushleft \textbf{Trabajo realizado por:}
+    \bigskip
+    \normalsize
+    \begin{tabular}{|p{8cm}}
+        \arrayrulecolor{Prune}
+        \authorx
+    \end{tabular}
+    \flushright \textbf{\datex}
+    \bigskip
+    \hspace*{20mm}
+    \vspace{15mm}
+\end{minipage}
+
+\fontsize{11}{1.2}\selectfont
+\normalfont
+\restoregeometry
+\clearpage %% old habits die hard ;-)
+\newpage
+\setcounter{page}{1}
+}
+
+\newcommand{\sys}[2]{
+    {}^#1T_{#2}
+}

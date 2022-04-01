@@ -1,0 +1,132 @@
+%%%%%%%%%%%%%%%%%%%%%%%% 
+% GLOSARIOS
+%%%%%%%%%%%%%%%%%%%%%%%%
+\usepackage[acronym,nonumberlist,toc]{glossaries}
+\usepackage{glossary-superragged}
+\newglossarystyle{modsuper}{%
+  \setglossarystyle{super}%
+  \renewcommand{\glsgroupskip}{}
+}
+\renewcommand{\glsnamefont}[1]{\textbf{#1}}
+
+\usepackage{lipsum}
+%%%%%%%%%%%%%%%%%%%%%%%%
+% DOCUMENTO EN ESPAÑOL
+%%%%%%%%%%%%%%%%%%%%%%%%
+\usepackage[base]{babel}
+\usepackage{polyglossia}
+\setdefaultlanguage{spanish}
+
+\addto\captionsspanish{%
+	\renewcommand{\listtablename}{Índice de tablas}
+	\renewcommand{\tablename}{Tabla}
+	\renewcommand{\lstlistingname}{Código}
+	\renewcommand{\lstlistlistingname}{Índice de \lstlistingname s}
+	\renewcommand{\glossaryname}{Glosario}
+	\renewcommand{\acronymname}{Acrónimos}
+	\renewcommand{\bibname}{Bibliografía}%
+}
+% Paquetes
+\usepackage[
+  inner	=	3.0cm, % Margen interior
+  outer	=	2.5cm, % Margen exterior
+  top	=	2.5cm, % Margen superior
+  bottom=	2.5cm, % Margen inferior
+  includeheadfoot, % Incluye cabecera y pie de página en los márgenes
+]{geometry}
+\newgeometry{ignoreall,top=2cm,outer=2cm,inner=2cm}
+\thispagestyle{empty}
+\usepackage{graphicx}
+\usepackage{calc}
+\usepackage{xstring}
+\usepackage{setspace}
+\usepackage{ifthen}
+\usepackage{tikz}
+\usetikzlibrary{calc}
+\usetikzlibrary{positioning}
+\usetikzlibrary{fit}
+\usetikzlibrary{shapes}
+\usetikzlibrary{arrows}
+\usepackage{eso-pic}
+%%%%%%%%%%%%%%%%%%%%%%%%
+% TEXTO
+%%%%%%%%%%%%%%%%%%%%%%%%
+% Paquete para poder modificar las fuente de texto
+\usepackage{xltxtra}
+% Cualquier tamaño de texto. Uso: {\fontsize{100pt}{120pt}\selectfont tutexto}
+\usepackage{anyfontsize}
+% Para modificar parametros del texto.
+\usepackage{setspace}
+% Paquete para posicionar bloques de texto
+\usepackage{textpos}
+% Paquete para realizar cajas de texto.
+% Uso: \begin{mdframed}[linecolor=red!100!black] tutexto \end{mdframed}
+\usepackage{framed,mdframed}
+% Para subrayar. Uso: \hlc[tucolor]{tutexto}
+\newcommand{\hlc}[2][yellow]{ {\sethlcolor{#1} \hl{#2}} }
+\newfontfamily\FuenteTitulo{HelveticaLTStd-Cond}[Path=./include/fuentes/]
+% Helvetica. Uso: {\FuentePortada tutexto}
+\newfontfamily\FuentePortada{Helvetica}[Path=./include/fuentes/]
+
+\makeatletter
+\def\identificador#1{\def\@identificador{#1}}
+\def\identificadorx{\@identificador}% Display title
+
+\def\seguridad#1{\def\@seguridad{#1}}
+\def\seguridadx{\@seguridad}% Display title
+
+\def\titulo#1{\def\@titulo{#1}}
+\def\titulox{\@titulo}% Display title
+
+\def\tipo#1{\def\@tipo{#1}}
+\def\tipox{\@tipo}% Display title
+
+\newcommand*{\logo}[2][scale=0.5]{%
+  \gdef\@logo@params{#1}%
+  \gdef\@logo{#2}%
+}
+\newcommand*{\@logo@params}{}
+\newcommand*{\@logo}{}
+\def\logox{\expandafter\includegraphics\expandafter[\@logo@params]{\@logo}}
+
+\def\autor#1{\def\@autor{#1}}
+\def\autorx{\@autor}% Display title
+
+\def\tutor#1{\def\@tutor{#1}}
+\def\tutorx{\@tutor}% Display title
+
+\def\fecha#1{\def\@fecha{#1}}
+\def\fechax{\@fecha}% Display title
+
+ \makeatother
+
+
+\StrLen{\@titulox}[\longitudtitulo] % Cuenta los caracteres título
+\definecolor{fondo}{RGB}{32,2,116}
+\newcommand{\colorfondo}{white}
+
+
+
+% Tamaño por defecto de la fuente de texto para:
+\def\FuenteTamano{55pt}	% Tamaño para el título del trabajo
+\def\interlinportada{5.0} % Interlineado por defecto para el título
+\def\TamTrabajo{20pt} 	% Tamaño para el tipo de trabajo (grado o máster)
+\def\TamTrabajoIn{20pt} 	% Tamaño para el salto de línea después de tipo de trabajo
+\def\TamOtros{14pt} 	% Tamaño para datos personales y fecha
+\def\TamOtrosIn{1pt} 	% Tamaño para los saltos de línea en la info personal
+
+
+% Comprueba la longitud del título y según sea este determina unos valores nuevos
+\ifthenelse{\longitudtitulo > 180}{
+\def\FuenteTamano{35pt}		% Si es mayor a 180 caracteres tamaño de fuente 35pt
+\def\interlinportada{3.5}} 	% Establece nuevo interlineado
+{\ifthenelse{\longitudtitulo > 140}{
+\def\FuenteTamano{40pt}		% Si es mayor a 140 caracteres tamaño de fuente 40pt
+\def\interlinportada{4.0}} 	% Establece nuevo interlineado
+{\ifthenelse{\longitudtitulo > 120}{
+\def\FuenteTamano{50pt}		% Si es mayor a 120 caracteres tamaño de fuente 50pt
+\def\interlinportada{4.5}} 	% Establece nuevo interlineado
+{} % Si no, no modifica el tamaño
+} }
+
+

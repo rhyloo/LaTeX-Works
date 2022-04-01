@@ -1,0 +1,139 @@
+\usepackage[a4paper,left=2.5cm,right=2cm,top=2.5cm,bottom=2.5cm]{geometry}
+\usepackage[spanish]{babel}
+\usepackage[framemethod=tikz]{mdframed}
+\usepackage[colorlinks=true,linkcolor=blue]{hyperref}
+\addto\extrasspanish{%
+  \def\figurename{Figura}%
+  \def\figureautorefname{figura}%
+}
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage{lmodern}
+\usepackage[absolute]{textpos}
+\usepackage[final]{pdfpages}
+\usepackage[font=scriptsize,labelfont=bf]{caption}
+\usepackage[makeroom]{cancel}
+\usepackage[most]{tcolorbox}
+\usepackage[nottoc,numbib]{tocbibind}
+\usepackage{amsfonts}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{listings}
+\usepackage{array}
+\usepackage{bashful}
+\usepackage{calc}
+\usepackage{colortbl}
+\usepackage{eso-pic}
+\usepackage{fancyhdr}
+\usepackage{float}
+\usepackage{graphicx}
+\usepackage{ifthen}
+\usepackage{lipsum}
+\usepackage{mdframed}
+\usepackage{minted}
+\usepackage{multicol}
+\usepackage{multirow}
+\usepackage{setspace}
+\usepackage{verbatim}
+\usepackage{fancyvrb}
+\usepackage{alltt}
+\usepackage{upquote}
+
+\newcommand{\maxwidth}[1]{\ifdim\linewidth>#1 #1\else\linewidth\fi}
+\newcommand{\mlcell}[1]{{\color{output}\verbatim@font#1}}
+
+\definecolor{output}{gray}{0.4}
+% environment styles for MATLAB code and output
+\mdfdefinestyle{matlabcode}{%
+  outerlinewidth=.5pt,
+  linecolor=gray!20!white,
+  roundcorner=2pt,
+  innertopmargin=.5\baselineskip,
+  innerbottommargin=.5\baselineskip,
+  innerleftmargin=1em,
+  backgroundcolor=gray!10!white
+}
+
+\newenvironment{matlabcode}{\verbatim}{\endverbatim}
+\surroundwithmdframed[style=matlabcode]{matlabcode}
+
+\newenvironment{matlaboutput}{%
+  \Verbatim[xleftmargin=1.25em, formatcom=\color{output}]%
+}
+{\endVerbatim}
+
+\newenvironment{matlabsymbolicoutput}{%
+  \list{}{\leftmargin=1.25em\relax}%
+  \item\relax%
+  \color{output}\verbatim@font%
+}{\endlist}
+
+\newenvironment{matlabtableoutput}[1]{%
+  {\color{output}%
+  \hspace*{1.25em}#1}%
+}{}
+
+
+% Table of Contents style
+\newcounter{multititle}
+\newcommand{\matlabmultipletitles}{\setcounter{multititle}{1}}
+
+\newcounter{hastoc}
+\newcommand{\matlabhastoc}{\setcounter{hastoc}{1}}
+
+\newcommand{\matlabtitle}[1]{
+\ifnum\value{multititle}>0
+  \ifnum\value{hastoc}>0
+    \addcontentsline{toc}{section}{#1}
+  \fi
+\fi
+\section*{#1}
+}
+
+\newcommand{\matlabheading}[1]{
+\ifnum\value{hastoc}>0
+  \addcontentsline{toc}{subsection}{#1}
+\fi
+\subsection*{#1}
+}
+
+\newcommand{\matlabheadingtwo}[1]{
+\ifnum\value{hastoc}>0
+  \addcontentsline{toc}{subsubsection}{#1}
+\fi
+\subsubsection*{#1}
+}
+
+\newcommand{\matlabheadingthree}[1]{
+\ifnum\value{hastoc}>0
+  \addcontentsline{toc}{paragraph}{#1}
+\fi
+\paragraph*{#1}
+}
+
+\newcommand{\matlabtableofcontents}[1]{
+\renewcommand{\contentsname}{#1}
+\tableofcontents
+}
+ 
+
+\BeforeBeginEnvironment{minted}{\begin{tcolorbox}}%
+  \AfterEndEnvironment{minted}{\end{tcolorbox}}%
+
+\usepackage{tikzpagenodes}
+\usepackage{wrapfig}
+\usepackage{xcolor}
+\usepackage{xstring}
+
+\usepackage{tikz}
+\usetikzlibrary{arrows}
+\usetikzlibrary{calc}
+\usetikzlibrary{fit}
+\usetikzlibrary{positioning}
+\usetikzlibrary{positioning}
+\usetikzlibrary{shapes}
+% \usepackage{matlab}
+
+\renewcommand{\lstlistingname}{Código}% Listing -> Algorithm
+\renewcommand{\lstlistlistingname}{Lista de \lstlistingname s}% List of Listings -> List of Algorithms
+\providecommand{\lstlistingautorefname}{código}

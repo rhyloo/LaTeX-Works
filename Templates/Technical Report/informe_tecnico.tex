@@ -1,0 +1,180 @@
+% \documentclass[a4paper,10pt,titlepage]{scrartcl}
+\documentclass[a4paper,11pt,titlepage,openright,twoside]{scrartcl}
+\renewcommand{\autodot}{}% Remove all end-of-counter dots
+
+\setkomafont{disposition}{\normalfont\bfseries}
+\setkomafont{pagenumber}{} % Número de página(Sin nada añadido)
+
+% Añade al índice y numera hasta la profundidad 4.
+% 1:section,2:subsection,3:subsubsection,4:paragraph
+\setcounter{tocdepth}{3}
+\setcounter{secnumdepth}{4}
+\setcounter{section}{-1}
+
+% Muestra una regla para comprobar el formato de las páginas
+%\usepackage[type=upperleft,showframe,marklength=8mm]{fgruler}
+
+% MÁRGENES DE LAS PÁGINAS
+% \usepackage[
+%   inner	=	3.0cm, % Margen interior
+%   outer	=	2.5cm, % Margen exterior
+%   top	=	2.5cm, % Margen superior
+%   bottom=	2.5cm, % Margen inferior
+%   includeheadfoot, % Incluye cabecera y pie de página en los márgenes
+% ]{geometry}
+
+% Valor de interlineado
+\renewcommand{\baselinestretch}{1.0} % 1 línea de interlineado
+% Para poder generar páginas horizontales
+\setlength{\marginparwidth}{2cm}
+
+\input{./config_files/packages}
+\makeglossaries % Genera la base de datos de acrónimos
+\input{contenido/especiales/simbolos} % Archivo que
+\input{contenido/especiales/acronimos} % Archivo que contiene los acrónimos
+\input{contenido/especiales/definiciones} % Archivo que
+
+\usepackage{noto}
+% \renewcommand{\familydefault}{\sfdefault}
+\renewcommand{\familydefault}{\rmdefault}
+% \usepackage{fontspec}
+% \setsansfont{Arial}
+ 
+% \usepackage{fontspec}
+% \defaultfontfeatures{Mapping=tex-text,Scale=MatchLowercase}
+% \setmainfont{Times}
+% \setmonofont{Lucida Sans Typewriter}
+
+\begin{document}
+% \newrefsection
+\titulo{Análisis de viabilidad para el uso de vehículos eléctricos o de gasolina en reparto a domicilio}
+\subtitulo{}
+\identificador{IT-PI-02}
+\organizacion{DELICIOUS BURGER S.A \\ \small{Av. de María Zambrano, N.º 7, C.P 29006}}
+\seguridad{CONFIDENCIAL}
+\logo[scale=0.5]{archivos/burgers-logo.jpg}
+\tipo{Informe técnico}
+\autor{Lucas Acebal Colli \\ Alberto Cándido Amores Navas \\ Carlos Atencia Tabares \\ Jorge Luis Benavides Macías \\ Irene Guijarro Molina}
+
+
+\asociacion{Escuela de Ingenierías Industriales, Universidad de Málaga}
+\tutor{}
+\fecha{\today}
+
+\setlength {\marginparwidth }{1cm}
+
+\input{include/portada/cubierta} % Cubierta
+\setcounter{page}{1}
+% \newcounter{sectionpagecounter}
+% \newcommand{\resetsectionpagecount}{\setcounter{sectionpagecounter}{1}}
+\input{include/portada/portada} % Portada
+
+\input{contenido/especiales/resumen}
+\input{include/portada/firmas}
+
+\tableofcontents	% Índice
+\newpage
+\listoffigures		% Índice de figuras
+% \startlist[main]{lof}% starts main list of figures
+% \printlist[main]{lof}{}{\section*{List of Figures in Main Part}}% prints main list of figures
+
+\counterwithout{table}{section}
+
+\listoftables		% Índice de tablas
+% \newpage
+%\lstlistoflistings	% Índice de códigos
+% \newpage
+
+\glsaddall
+\printglossary[type=symbolslist,style=long,title={Símbolos}]   % list of symbols
+%\glsaddallunused
+\printglossary[type=\acronymtype,style=long]  % list of acronyms
+\printglossary[type=main] 
+\newpage
+
+\input{contenido/especiales/prefacio}
+\input{contenido/introduccion}
+\input{contenido/normativa}
+\input{contenido/elementos}
+\input{contenido/modelos}
+\input{contenido/infraestructuras}
+\input{contenido/rentabilidad}
+\input{contenido/conclusiones}
+\input{contenido/referencias/referencias_nucleo}
+
+% \appendix
+\label{lastpage}
+\clearpage
+% \stoplist[main]{lof}% stops main list of figures
+% \pagestyle{empty}
+\cfoot{}
+\addappheadtotoc
+\appendixpage
+\setcounter{apppage}{35}
+\EveryShipout{\stepcounter{apppage}}
+\renewcommand{\thepage}{\arabic{apppage}}
+\begin{appendices}
+% \ihead{\seguridadx}
+% \ohead{\identificadorx}
+% \clearpage
+% \startlist[appendix]{lof}% starts list of figures in appendices
+% \printlist[appendix]{lof}{}{\section*{List of Figures in 
+% Appendices}}% prints list of figures in appendices
+% \RedeclareSectionCommands{section}
+% \renewcommand*{\sectionlinesformat}[4]{%
+%   \hspace*{#2}%
+%   \parbox{\dimexpr\linewidth-#2\relax}{\huge\centering
+%     \ifstr{#3}{}{}{#3\\}%
+%     #4}%
+% }
+
+% \renewcommand{\thesectiondis}[2]{\Alph{section}:}
+
+\makeatletter
+\newcommand\centeredsection{ \@startsection  {section}{1}{\z@\hspace{-0.5\textwidth}\centering\huge}%
+{-3.5ex \@plus -1ex \@minus -.2ex}%
+{2.3ex \@plus.2ex}%
+{
+%\vspace*{0.5\fill}
+\hspace{0.5\textwidth}\centering\normalfont\huge\bfseries}}
+\makeatother
+
+
+% \makeatletter
+% \g@addto@macro\appendices{%
+%   \titleformat{\section}[display]%
+%     {\normalfont\Large\bfseries}{\appendixname\enspace\thesection}{.5em}{}%
+% }
+% \makeatother
+
+\makeatletter
+\addtocontents{toc}{
+  \begingroup
+%   \let\protect\l@chapter\protect\l@section
+  \let\protect\l@section\protect\l@subsection
+  \let\protect\l@subsection\protect\l@subsubsection
+}
+
+% \newrefsection
+\input{contenido/Anexos/anexo_planos}
+\input{contenido/Anexos/anexo_ciclomotor_gasolina}
+\input{contenido/Anexos/anexo_scooter_gasolina}
+\input{contenido/Anexos/anexo_scooter_electrico}
+\input{contenido/Anexos/anexo_patinete_electrico}
+\input{contenido/Anexos/anexo_bicicleta_electrica}
+\input{contenido/Anexos/anexo_vehiculos}
+%\input{contenido/Anexos/anexo_motos_bicis_electricos}
+\input{contenido/Anexos/anexo_precios_taller_combustible}
+\input{contenido/Anexos/anexo_ficha_tecnica_kymco}
+%\input{contenido/Anexos/anexo_ficha_tecnica_askoll}
+%\input{contenido/Anexos/anexo_ficha_tecnica_infinity_cityjam}
+\input{contenido/Anexos/anexo_infraestructuras}
+% \input{contenido/Anexos/anexo_referencias}
+\end{appendices}
+
+\input{include/portada/hoja_datos}
+\input{include/portada/cubierta_posterior}
+
+% Hoja de datos
+% Cubierta posterior
+\end{document}

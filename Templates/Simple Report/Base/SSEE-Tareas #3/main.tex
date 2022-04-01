@@ -1,0 +1,193 @@
+\documentclass[11pt,a4paper]{article}
+\input{config_files/packages}
+\newcommand{\grado}{Grado en ingeniería en electrónica, robótica y mecatrónica}
+\newcommand{\asignatura}{Sistemas Electrónicos}
+\newcommand{\actividad}{Tareas puntuables}
+\newcommand{\titulo}{RAM-based Shift Register}
+\newcommand{\subtitulo}{Tarea \# 3}
+\newcommand{\descripcion}{Análisis de un registro de desplazamiento basado en la RAM.}
+\newcommand{\foto}{\includegraphics[scale=0.75]{images/registro_de_desplazamiento.pdf}}
+\newcommand{\curso}{2021-2022}
+\newcommand{\autor}{Jorge Benavides Macías \\ 05306948-C}
+\begin{document}
+% \input{config_files/portada}
+\begin{itemize}
+    \item Configuración del CORE GENERATOR.
+    
+    \begin{figure}[H]
+        \centering
+        \includegraphics[scale=0.5]{images/core_1.png}
+        \caption{Ventana de configuración. Página 1 de 3.}
+    \end{figure}
+    
+    \begin{figure}[H]
+        \centering
+        \includegraphics[scale=0.5]{images/core_2.png}
+        \caption{Ventana de configuración. Página 2 de 3.}
+    \end{figure}
+    
+    \begin{figure}[H]
+        \centering
+        \includegraphics[scale=0.5]{images/core_3.png}
+        \caption{Ventana de configuración. Página 3 de 3.}
+    \end{figure}
+    
+    \item Script de simulación.
+    
+\begin{minted}[frame=lines,framesep=2mm,baselinestretch=1.2,bgcolor=LightGray,fontsize=\footnotesize,linenos]
+{vhdl}
+-- Vhdl test bench created from schematic C:\Users\rhylo\Desktop\tarea_seee\testing\top.sch 
+-- Thu Dec 19 17:09:33 2021
+-- Notes: 
+-- 1) This testbench template has been automatically generated using types
+-- std_logic and std_logic_vector for the ports of the unit under test.
+-- Xilinx recommends that these types always be used for the top-level
+-- I/O of a design in order to guarantee that the testbench will bind
+-- correctly to the timing (post-route) simulation model.
+-- 2) To use this template as your testbench, change the filename to any
+-- name of your choice with the extension .vhd, and use the "Source->Add"
+-- menu in Project Navigator to import the testbench. Then
+-- edit the user defined section below, adding code to generate the 
+-- stimulus for your design.
+--
+LIBRARY ieee;
+USE ieee.std_logic_1164.ALL;
+USE ieee.numeric_std.ALL;
+LIBRARY UNISIM;
+USE UNISIM.Vcomponents.ALL;
+ENTITY top_top_sch_tb IS
+END top_top_sch_tb;
+ARCHITECTURE behavioral OF top_top_sch_tb IS 
+
+   COMPONENT top
+   PORT( d	:	IN	STD_LOGIC_VECTOR (15 DOWNTO 0); 
+          a	:	IN	STD_LOGIC_VECTOR (4 DOWNTO 0); 
+          ck	:	IN	STD_LOGIC; 
+          q	:	OUT	STD_LOGIC_VECTOR (15 DOWNTO 0));
+   END COMPONENT;
+
+   SIGNAL d	:	STD_LOGIC_VECTOR (15 DOWNTO 0);
+   SIGNAL a	:	STD_LOGIC_VECTOR (4 DOWNTO 0);
+   SIGNAL ck	:	STD_LOGIC;
+   SIGNAL q	:	STD_LOGIC_VECTOR (15 DOWNTO 0);
+
+BEGIN
+
+   UUT: top PORT MAP(
+		d => d, 
+		a => a, 
+		ck => ck, 
+		q => q
+   );
+
+-- *** Test Bench - User Defined Section ***
+CK_process :process
+	begin
+		CLOCK_LOOP : LOOP
+		ck <= transport '0';
+		WAIT FOR 4 ns;
+		ck <= transport '1';
+		WAIT FOR 5 ns;
+		ck <= transport '0';
+		WAIT FOR 1 ns;
+		END LOOP CLOCK_LOOP;
+  end process; 
+
+   tb : PROCESS
+   BEGIN
+		d <= transport "0000000011111111";
+		a <= transport "00101";
+		WAIT FOR 250 ns;
+		d <= transport "0000000011110111";
+		a <= transport "00110";
+		WAIT FOR 250 ns;
+		d <= transport "0000000010111111";
+		a <= transport "01100";
+		WAIT FOR 250 ns;
+		d <= transport "0000000011111011";
+		a <= transport "10100";
+		WAIT FOR 250 ns;
+		d <= transport "0000000011111110";
+		a <= transport "01000";
+		WAIT FOR 250 ns;
+		
+		d <= transport "0001000010011111";
+		a <= transport "01101";
+		WAIT FOR 250 ns;
+		d <= transport "0100000010110111";
+		a <= transport "01010";
+		WAIT FOR 250 ns;
+		d <= transport "0001100010111111";
+		a <= transport "01001";
+		WAIT FOR 250 ns;
+		d <= transport "0011100011111011";
+		a <= transport "01110";
+		WAIT FOR 250 ns;
+		d <= transport "0000010010011110";
+		a <= transport "01011";
+		WAIT FOR 250 ns;
+      WAIT; -- will wait forever
+   END PROCESS;
+-- *** End Test Bench - User Defined Section ***
+END;
+\end{minted}
+    \item Capturas de simulación.
+    
+    \begin{figure}[H]
+        \centering
+        \includegraphics[scale=0.35]{images/simulacion1.png}
+        \caption{Simulación realizada}
+    \end{figure}
+    
+    \begin{figure}[H]
+        \centering
+        \includegraphics[scale=0.35]{images/simulacion2.png}
+        \caption{Simulación realizada}
+    \end{figure}
+    
+    \begin{figure}[H]
+        \centering
+        \includegraphics[scale=0.35]{images/simulacion3.png}
+        \caption{Simulación realizada}
+    \end{figure}
+    \item Comentarios.
+    
+    El dispositivo simulado es un registro de desplazamiento basado en RAM, durante las distintas prácticas hemos usado varias, hechas por nosotros con flip-flops, así que el funcionamiento no es un misterio, los datos entran por D(X:0) y salen por Q(X:0), los bits se almacenan en flip-flops y estos se desplazan de un flip-flop a otro, durante un tiempo.
+    
+    Este dispositivo se diferencia de los usados en clase en que el retardo entre la entrada y salida es variable, modificado por la señal a(X:0), para activar esta señal he seleccionado la opción \textit{``Variable Lenght Lossless''}, esto ha modificado la latencia del dispositivo a \textit{1} ya que el último bit es registrado. El resto de parámetros no los he cambiado, excepto el \textit{width} y \textit{depth}, cuyos valores he sacado del datasheet ya que hay una tabla normalizada para la Spartan 3 y me ha parecido interesante usarlos ya que la Spartan 6 y la Spartan 3 comparten características como hemos visto en clase, \textit{width} es el tamaño de la entrada y \textit{depth} es el tamaño del retardo que podemos introducir.
+    
+    Posee la función de \textit{clock enable} pero no la he activado, y 3 funciones más para señalar un valor de inicio (\textit{SINIT}), hacer un clear (\textit{SCLR}) o colocar un valor (\textit{SSET}), todas estas funciones son síncronas, desactivadas porque no son parte del objetivo de la tarea.
+    
+    La interpretación de los datos la damos nosotros, ya que los datos que entran son los mismos que salen, pero retrasados, es decir que pueden estar en C2, en binario natural, signo-magnitud o cualquier otro formato, el diseñador es el que debe considerarlo.
+    
+    Es un circuito sin pipeline, pero como he comentado antes tiene latencia 1; el número de ciclos que tarda en total es la suma del número introducido en a(4:0) más 1. 
+    
+    Como se puede observar en la ventana de configuración no hay una sección de información como en otros dispositivos para saber la cantidad de LUTS, Slices o de recursos de la FPGA usados, dado que en el top de mi proyecto solo hay un dispositivo, he compilado el top y he mirado los recursos usados en la ventana \textit{Design Summary}.
+    
+    \begin{figure}[H]
+        \centering
+        \includegraphics[scale=0.5]{images/information.pdf}
+        \caption{Design Summary}
+    \end{figure}
+    
+    Se usan 16 flip-flops, uno por cada bit de entrada, 16 Slices usados como memoria y 16 registros de desplazamiento.
+    
+    Respecto al código usado para la simulación he introducido los valores en las señales directamente y un retraso aleatorio mayor que 4 como se pide en la tarea; el bloque de simulación es el siguiente:
+    
+    \begin{figure}[H]
+        \centering
+        \includegraphics[scale=1]{images/registro de desplazamiento_simbolo.pdf}
+        \caption{Símbolo - Registro de desplazamiento}
+    \end{figure}
+  
+  Para la simulación he seleccionado el mayor valor de a, que en mi caso es 20, he sumado 1 y lo he multiplicado por el periodo del reloj 10ns que da como resultado 210ns, en la simulación he puesto 250ns para asegurarme de que se aprecia correctamente; en la simulación los ciclos de reloj se cuentan con el flanco de subida, para el cambio de 0 a 255 (todos los números tienen el formato unsigned decimal) hay 5 ciclos de reloj porque el retardo introducido es 4 más 1, como hemos comentado anteriormente.
+    
+    Como función principal tenemos el almacenamiento de datos, pero esto se puede usar de distintas forma para lograr funciones más interesantes como el almacenamiento de datos, producir retrasos e incluso hacer hacer conversiones serie/paralelo.
+
+\end{itemize}
+
+% \fontsize{7.5}{1.2}\selectfont
+% \nocite{*}
+% \bibliographystyle{IEEEtran}
+% \bibliography{references}
+\end{document}

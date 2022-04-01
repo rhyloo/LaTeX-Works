@@ -1,0 +1,127 @@
+%Negrita
+\textbf{hola como va eso irene}
+
+%%Italica
+\textit{\textbf{hola como va eso}}
+
+%%Subrayado
+\underline{\textit{\textbf{hola como va eso}}}
+
+%%Salto de página
+\newpage
+
+%%Salto de linea
+%%Con dejar un espacio entre el texto es suficiente
+\textbf{:( el profe no conoce el programa} 
+
+\textbf{\textbf{Confirmo no lo conozco}}
+
+%%Muchos saltos de linea
+%%Con dejar un espacio entre el texto es suficiente
+\textbf{:( el profe no conoce el programa} \\ \\
+
+\textbf{\textbf{Confirmo no lo conozco}}
+
+%% Entornos útiles
+%% Etorno para centrar el contenido
+\begin{center}
+    \textbf{Texto centrado}
+\end{center}
+
+%% Etorno para alinear a la derecha
+\begin{flushright}
+    \textbf{Texto derecha}
+\end{flushright}
+
+%% Etorno para alinear a la izquierda
+\begin{flushleft}
+    \textbf{Texto alineado a la izquierda}
+\end{flushleft}
+
+%% Listas
+%% Listas con simbolos
+\begin{itemize}
+    \item Paté atún
+    \begin{itemize}
+        \item segunda lista molona
+        \item hola
+    \end{itemize}
+    \item[1.)] Aceite de oliva
+    \item Agua
+    \item Jamón 
+    \item Leche
+    \item Sal
+    \item Chocolate
+\end{itemize}
+
+%% Listas con números
+\begin{enumerate}
+   \item First level item
+   \item First level item
+   \begin{enumerate}
+     \item Second level item
+     \item Second level item
+     \begin{enumerate}
+       \item Third level item
+       \item Third level item
+       \begin{enumerate}
+         \item Fourth level item
+         \item Fourth level item
+       \end{enumerate}
+     \end{enumerate}
+   \end{enumerate}
+ \end{enumerate}
+ 
+ %% Listas personalizadas
+\begin{enumerate}[1)]
+\item \textit{\textbf{Protón}}
+
+Un protón es una carga positiva
+\item \textbf{Electrón} Un protón es una carga positiva
+\item \underline{\textit{Neutrón}}
+\end{enumerate}
+
+%% Ecuaciones
+Lorem ipsum ecuación \ref{ecuacion_de_van1} dolor sit amet, consectetur adipiscing elit. Mauris et faucibus lacus. Nulla facilisi. Donec vitae felis ut sapien commodo ultrices. Integer lectus ex, maximus et iaculis ut, gravida et mi. Nulla elementum urna molestie tincidunt pretium. Aenean consectetur tempor $\frac{a}{b} = \sqrt{x^2 \dot b_2}$ ex quis eleifend. Quisque nisl orci, cursus a leo a, tincidunt vestibulum nibh. Sed ullamcorper turpis orci, at varius lorem mollis et. Morbi lobortis $$ \frac{a}{b} = \sqrt{x^2 \dot b_2} $$ finibus sagittis. Duis finibus pharetra turpis id laoreet. Phasellus luctus vestibulum arcu, eget\[ \frac{a}{b} = \sqrt{x^2 \dot b_2}\] faucibus augue ultrices sed. Proin id imperdiet quam, id pulvinar justo.
+
+
+
+\begin{equation}
+    \label{eq:ecuacion_de_van1}
+    \frac{\triangle a}{\wp b} = \sqrt{\delta x^2 \dot b_2} 
+\end{equation}
+
+Sed sed efficitur nibh. Morbi facilisis eros enim. Vivamus non nunc non sapien luctus mattis id in eros. Mauris tempor sapien ac dapibus dignissim. Integer lacinia nisi sit amet neque iaculis ultricies eu sed lectus. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Proin vel fermentum lacus, et laoreet magna. Mauris dui orci, commodo non tellus in, tristique pulvinar justo. In massa arcu, ultricies vel ex in, commodo placerat mauris. Maecenas vestibulum leo vel dui ornare rhoncus. Morbi porta lobortis sem et sollicitudin. Donec urna tellus, pulvinar at nisl hendrerit, tempus condimentum justo. Etiam massa lorem, gravida convallis felis eget, vulputate mattis sapien.
+
+\begin{equation}
+    \label{ecuacion_de_van2}
+    a_1,a_2 = \frac{-b \pm \sqrt{b^2-4ac}}{2a}
+\end{equation}
+
+Sed sed efficitur nibh. Morbi facilisis eros enim. Vivamus non nunc non sapien luctus mattis id in eros. Mauris tempor sapien ac dapibus dignissim. Integer lacinia nisi sit amet neque iaculis ultricies eu sed lectus. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Proin vel fermentum lacus, et laoreet magna. Mauris dui orci, commodo non tellus in, tristique pulvinar justo. In massa arcu, ultricies vel ex in, commodo placerat mauris. Maecenas vestibulum leo vel dui ornare rhoncus. Morbi porta lobortis sem et sollicitudin. Donec urna tellus, pulvinar at nisl hendrerit, tempus condimentum justo. Etiam massa lorem, gravida convallis felis eget, vulputate mattis sapien.
+
+\begin{equation}
+    \label{ecuacion_de_van3}
+    {}^AT_B
+\end{equation}
+
+\begin{equation*}
+    \log_{10}(2)
+\end{equation*}
+
+Como se muestra en la figura \ref{fig:robots_asesinos}, los robots tiene una curva del miedo en la que son tan parecidos a los humanos que dan miedo.
+%% Imágenes
+\begin{figure}[H]
+    \centering
+    \includegraphics[scale=0.2]{archivos/l-intro-1624582212.jpg}
+    \caption{Roboses asesinos en la ciencia ficción}
+    \label{fig:robots_asesinos}
+\end{figure}
+
+\missingfigure{\large Aquí va la imagen de Alberto ligando}
+
+%%autoref es genérico para cualquier tipo
+\autoref{anexo_ciclomotor_gasolina}
+
+%refanexo se usa exclusivamente con anexos
+\refanexo{plano:situacion}
